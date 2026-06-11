@@ -51,27 +51,6 @@ function filterFAQ(cat) {
   });
 }
 
-// Billing toggle
-function toggleBilling() {
-  const isAnnual = document.getElementById('billingToggle').checked;
-  const starterEl = document.getElementById('starterPrice');
-  const businessEl = document.getElementById('businessPrice');
-  const monthLabel = document.getElementById('monthlyLabel');
-  const annualLabel = document.getElementById('annualLabel');
-
-  if (isAnnual) {
-    starterEl.textContent = '3,150';
-    businessEl.textContent = '756';
-    monthLabel.classList.remove('active');
-    annualLabel.classList.add('active');
-  } else {
-    starterEl.textContent = '3,500';
-    businessEl.textContent = '840';
-    monthLabel.classList.add('active');
-    annualLabel.classList.remove('active');
-  }
-}
-
 // Contact form
 function submitForm(e) {
   e.preventDefault();

@@ -460,24 +460,15 @@
     <p class="section-eyebrow">Simple Pricing</p>
     <h2 class="section-title">No Hidden Fees. No Surprises.</h2>
     <p class="section-sub">Start with a 7-day free trial on any plan. No credit card required.</p>
-    <div class="pricing-toggle">
-      <span class="toggle-label active" id="monthlyLabel">Monthly</span>
-      <label class="toggle-switch">
-        <input type="checkbox" id="billingToggle" onchange="toggleBilling()">
-        <span class="toggle-slider"></span>
-      </label>
-      <span class="toggle-label" id="annualLabel">Annual <span class="save-badge">Save 10%</span></span>
-    </div>
+    <p class="section-sub" style="text-align:center;margin:0 auto 48px">All plans include a 7-day free trial. Contact our team for exact pricing tailored to your company size.</p>
     <div class="pricing-grid">
       <div class="price-card">
         <div class="price-name">Starter</div>
         <div class="price-desc">Small teams up to 10 users</div>
         <div class="price-amount">
-          <span class="currency">₹</span>
-          <span class="amount" id="starterPrice">3,500</span>
-          <span class="period">/month</span>
+          <span class="amount enterprise-price">Talk to Sales</span>
         </div>
-        <a href="#contact" class="btn-price">Start Free Trial</a>
+        <a href="#contact" class="btn-price">Contact Sales Team →</a>
         <div class="price-features">
           <div class="pf-item">✅ Up to 10 users</div>
           <div class="pf-item">✅ 20 prompts/user/day</div>
@@ -495,11 +486,9 @@
         <div class="price-name">Business</div>
         <div class="price-desc">Growing companies, unlimited users</div>
         <div class="price-amount">
-          <span class="currency">₹</span>
-          <span class="amount" id="businessPrice">840</span>
-          <span class="period">/user/month</span>
+          <span class="amount enterprise-price">Talk to Sales</span>
         </div>
-        <a href="#contact" class="btn-price-featured">Start Free Trial</a>
+        <a href="#contact" class="btn-price-featured">Contact Sales Team →</a>
         <div class="price-features">
           <div class="pf-item">✅ Unlimited users</div>
           <div class="pf-item">✅ 50 prompts/user/day</div>
@@ -516,9 +505,9 @@
         <div class="price-name">Enterprise</div>
         <div class="price-desc">Large companies, custom requirements</div>
         <div class="price-amount">
-          <span class="amount enterprise-price">Custom</span>
+          <span class="amount enterprise-price">Talk to Sales</span>
         </div>
-        <a href="#contact" class="btn-price">Contact Sales</a>
+        <a href="#contact" class="btn-price">Contact Sales Team →</a>
         <div class="price-features">
           <div class="pf-item">✅ Unlimited users + prompts</div>
           <div class="pf-item">✅ All models + custom integration</div>
@@ -534,49 +523,6 @@
     </div>
     <div class="pricing-note">
       GST invoice provided · UPI, bank transfer, credit card accepted · Cancel anytime
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="container">
-    <p class="section-eyebrow">Trusted by IT Teams</p>
-    <h2 class="section-title">What IT Leaders Are Saying</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>"We had employees using ChatGPT for client contracts. With SecureAI Gateway, that risk is gone. Setup took 20 minutes and our compliance team approved it immediately."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">LF</div>
-          <div>
-            <div class="author-name">[Client Name]</div>
-            <div class="author-role">IT Manager · Legal Firm</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card featured-testimonial">
-        <div class="stars">★★★★★</div>
-        <p>"Our compliance team was blocking all AI tools. Now we use SecureAI Gateway and they approved it immediately — on-premise data storage was the key decision maker."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">HC</div>
-          <div>
-            <div class="author-name">[Client Name]</div>
-            <div class="author-role">CISO · Healthcare Company</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>"At ₹840/user we're paying a fraction of ChatGPT Enterprise and getting better security controls. The local AI models alone save us ₹30,000/month in API costs."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">IS</div>
-          <div>
-            <div class="author-name">[Client Name]</div>
-            <div class="author-role">CTO · IT Services Company</div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -844,11 +790,12 @@
         </div>
       </div>
       <div class="contact-form-wrap">
-        <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+        <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" onsubmit="submitForm(event)">
+          <input type="hidden" name="form-name" value="contact">
           <div class="form-row">
             <div class="form-group">
               <label>Full Name *</label>
-              <input type="text" placeholder="Rajesh Sharma" required>
+              <input type="text" name="full_name" placeholder="Rajesh Sharma" required>
             </div>
             <div class="form-group">
               <label>Company Name *</label>
@@ -858,17 +805,17 @@
           <div class="form-row">
             <div class="form-group">
               <label>Business Email *</label>
-              <input type="email" placeholder="rajesh@company.com" required>
+              <input type="email" name="email" placeholder="rajesh@company.com" required>
             </div>
             <div class="form-group">
               <label>Phone Number</label>
-              <input type="tel" placeholder="+91 98765 43210">
+              <input type="tel" name="phone" placeholder="+91 98765 43210">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label>Company Size</label>
-              <select>
+              <select name="company_size">
                 <option>Select size</option>
                 <option>1–10 employees</option>
                 <option>11–50 employees</option>
@@ -879,7 +826,7 @@
             </div>
             <div class="form-group">
               <label>Industry</label>
-              <select>
+              <select name="industry">
                 <option>Select industry</option>
                 <option>Legal</option>
                 <option>Healthcare</option>
@@ -902,7 +849,7 @@
           </div>
           <div class="form-group">
             <label>Message</label>
-            <textarea placeholder="Tell us about your company's AI usage situation and what you're looking to solve..." rows="3"></textarea>
+            <textarea name="message" placeholder="Tell us about your company's AI usage situation and what you're looking to solve..." rows="3"></textarea>
           </div>
           <button type="submit" class="btn-primary" style="width:100%">Send Message →</button>
           <p class="form-note">We'll respond within 24 business hours. No spam, ever.</p>

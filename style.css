@@ -661,3 +661,11 @@ input:checked + .toggle-slider::before { transform: translateX(22px); }
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
+
+/* ── Pricing update ── */
+.price-amount .enterprise-price { 
+  font-size: 28px; 
+  background: var(--gradient-text);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
