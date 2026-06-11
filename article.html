@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Article — SecureAI Gateway Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.article-wrap{max-width:760px;margin:0 auto;padding:140px 24px 100px}
+.article-meta{display:flex;align-items:center;gap:14px;margin-bottom:20px;font-size:13px;color:var(--dim)}
+.article-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4.5vw,44px);font-weight:700;line-height:1.15;color:#fff;margin-bottom:36px}
+.article-body{font-size:16px;color:var(--text);line-height:1.85}
+.article-body h2{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:#fff;margin:40px 0 16px}
+.article-body h3{font-size:18px;font-weight:600;color:#fff;margin:28px 0 12px}
+.article-body p{margin-bottom:18px;color:var(--muted)}
+.article-body ul{margin:0 0 18px 22px;color:var(--muted)}
+.article-body li{margin-bottom:8px}
+.article-body strong{color:var(--text)}
+.article-callout{background:rgba(55,138,221,.08);border:1px solid rgba(55,138,221,.2);border-radius:var(--r);padding:20px 24px;margin:28px 0;font-size:15px;color:var(--muted)}
+.article-cta{background:linear-gradient(135deg,rgba(55,138,221,.12),rgba(0,212,255,.05));border:1px solid rgba(55,138,221,.3);border-radius:var(--r2);padding:36px;text-align:center;margin-top:56px}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--blue-l);margin-bottom:28px}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="logo">🛡️ SecureAI <span>Gateway</span></a>
+    <div class="nav-links">
+      <a href="features.html">Features</a><a href="pricing.html">Pricing</a>
+      <a href="security.html">Security</a><a href="blog.html" class="active">Blog</a><a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-cta"><a href="contact.html" class="btn btn-p">Start Free Trial</a></div>
+    <button class="burger" onclick="toggleMenu()">☰</button>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <a href="features.html">Features</a><a href="pricing.html">Pricing</a>
+    <a href="security.html">Security</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <a href="blog.html" class="back-link">← Back to Blog</a>
+  <div class="article-meta"><span class="tag tag-blue" id="aTag">AI Security</span><span id="aDate">June 2026</span><span>· SecureAI Gateway Team</span></div>
+  <h1 class="article-title" id="aTitle">Loading…</h1>
+  <div class="article-body" id="aBody"></div>
+  <div class="article-cta">
+    <h3 class="h3" style="margin-bottom:10px">Secure Your Company's AI Usage</h3>
+    <p style="font-size:15px;color:var(--muted);margin-bottom:24px">SecureAI Gateway gives your team safe access to Claude, GPT-4o, and local AI — with DLP protection built in. Free 7-day trial, live in 20 minutes.</p>
+    <a href="contact.html" class="btn btn-p btn-lg">Start Free Trial →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="ft-grid">
+      <div><div class="ft-logo">🛡️ SecureAI Gateway</div><p class="ft-desc">Enterprise AI governance platform.</p><div class="ft-tagline">AI. Secured. Governed.</div></div>
+      <div class="ft-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a></div>
+      <div class="ft-col"><h4>Company</h4><a href="contact.html">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
+      <div class="ft-col"><h4>Contact</h4><a href="mailto:sales@aventrixtechnologies.com">sales@aventrixtechnologies.com</a><a href="https://wa.me/919104277272">WhatsApp</a></div>
+    </div>
+    <div class="ft-bottom"><span>© 2026 Aventrix Technologies</span><a href="#">Privacy Policy</a></div>
+  </div>
+</footer>
+<a href="https://wa.me/919104277272" class="wa" target="_blank"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<script src="app.js"></script>
+<script>
+const ARTICLES = {
+  "shadow-ai": {
+    tag: "AI Security", date: "June 2026",
+    title: "What is Shadow AI and Why Your Company Is at Risk Right Now",
+    body: `
+<p>Right now, somewhere in your company, an employee is pasting company information into ChatGPT. They're not being malicious — they're trying to be productive. But that simple act may have just sent your confidential data to servers you don't control, with no record of it ever happening.</p>
+<p>This is <strong>Shadow AI</strong> — the use of AI tools by employees without IT approval, oversight, or controls. And research suggests around 83% of organizations have no governance controls over it.</p>
+<h2>Why Shadow AI Happens</h2>
+<p>AI tools like ChatGPT and Claude are genuinely useful. Employees use them to draft emails, summarize documents, write code, and analyze data. The productivity gain is real — which is exactly why banning AI doesn't work. Employees simply use it on their personal phones instead, making the problem invisible.</p>
+<h2>What Actually Gets Leaked</h2>
+<ul>
+<li><strong>Customer data:</strong> Names, emails, phone numbers pasted for "data cleanup" tasks</li>
+<li><strong>Financial information:</strong> Salary data, revenue figures, pricing strategies in drafted documents</li>
+<li><strong>Source code:</strong> Proprietary code — sometimes containing API keys and credentials — pasted for review</li>
+<li><strong>Legal documents:</strong> Contracts and case details that breach attorney-client privilege</li>
+<li><strong>Trade secrets:</strong> Product roadmaps, formulas, internal processes</li>
+</ul>
+<div class="article-callout">💡 <strong>The Samsung lesson:</strong> In 2023, Samsung engineers pasted proprietary semiconductor source code into ChatGPT to debug it. The data became part of OpenAI's systems. Samsung banned generative AI company-wide — losing the productivity benefits entirely.</div>
+<h2>Why a Ban Is the Wrong Answer</h2>
+<p>Banning AI pushes usage underground. Employees switch to personal devices, and IT loses all visibility. The companies that win won't be the ones that ban AI — they'll be the ones that govern it.</p>
+<h2>The Right Answer: Governed AI Access</h2>
+<p>Give employees a sanctioned, secure way to use AI. A gateway approach means every prompt passes through DLP scanning before reaching any AI provider. Sensitive data gets blocked automatically. Everything is logged. Employees keep their productivity, and IT keeps control.</p>
+<p>That's exactly what SecureAI Gateway does — running entirely on your own server, so your data never leaves your network.</p>`
+  },
+  "chatgpt-safely": {
+    tag: "IT Management", date: "June 2026",
+    title: "How to Use ChatGPT Safely in Your Company Without Risking Your Data",
+    body: `
+<p>Your employees are going to use AI whether you sanction it or not. The practical question for IT leaders is: how do you let them use it safely? Here's a step-by-step framework.</p>
+<h2>Step 1: Write an AI Usage Policy</h2>
+<p>Start with a clear, short policy that answers: Which AI tools are approved? What data can never be entered into AI? Who approves exceptions? Keep it to one page — long policies don't get read.</p>
+<h2>Step 2: Classify Your Data</h2>
+<p>Define three simple tiers:</p>
+<ul>
+<li><strong>Green:</strong> Public information — safe for any AI tool</li>
+<li><strong>Yellow:</strong> Internal information — only via approved, governed AI</li>
+<li><strong>Red:</strong> Customer PII, financials, credentials, legal documents — never enters external AI</li>
+</ul>
+<h2>Step 3: Train Employees (Briefly)</h2>
+<p>A 30-minute session covering real examples works better than a policy email. Show what a data leak looks like: "If you paste a customer list into ChatGPT, that data is now on OpenAI's servers."</p>
+<h2>Step 4: Implement Technical Controls</h2>
+<p>Policy without enforcement is just a suggestion. You need a technical layer that:</p>
+<ul>
+<li>Scans every prompt for sensitive data <strong>before</strong> it reaches the AI provider</li>
+<li>Blocks credit cards, Aadhaar/PAN numbers, credentials, and custom keywords automatically</li>
+<li>Logs every interaction for audit purposes</li>
+<li>Lets IT control which models each team can access</li>
+</ul>
+<div class="article-callout">🛡️ This is the gateway pattern: employees get a ChatGPT-like interface, but every prompt passes through your DLP engine first. Clean prompts proceed; sensitive ones are blocked with a clear explanation.</div>
+<h2>Step 5: Monitor and Iterate</h2>
+<p>Review blocked prompts weekly at first. You'll learn what employees actually try to do, tune your DLP rules, and identify training gaps. Most companies see block rates drop sharply within a month as employees adapt.</p>
+<h2>The Result</h2>
+<p>Employees keep AI productivity. IT gets visibility and control. Compliance gets audit logs. Nobody has to choose between innovation and security.</p>`
+  },
+  "data-leaks": {
+    tag: "Case Studies", date: "June 2026",
+    title: "5 Real AI Data Leaks That Cost Companies Millions",
+    body: `
+<p>AI data leaks aren't hypothetical. Here are five real incident patterns — and how each could have been prevented.</p>
+<h2>1. Samsung — Source Code in ChatGPT</h2>
+<p>Engineers pasted proprietary semiconductor source code into ChatGPT for debugging. The code became part of an external system outside Samsung's control. <strong>Result:</strong> company-wide generative AI ban.</p>
+<p><strong>Prevention:</strong> DLP scanning would have detected source code patterns and credentials, blocking the prompt before it left the network.</p>
+<h2>2. Healthcare Provider — Patient Data Exposure</h2>
+<p>Staff at multiple healthcare organizations have used consumer AI tools to summarize patient notes — sending protected health information (PHI) to third-party servers, a direct HIPAA violation with fines reaching millions of dollars per incident category.</p>
+<p><strong>Prevention:</strong> On-premise AI with PHI detection keeps patient data inside the network entirely.</p>
+<h2>3. Law Firm — Privileged Documents</h2>
+<p>Attorneys have submitted case documents to AI tools for drafting assistance — breaching attorney-client privilege and creating discoverable records on external servers.</p>
+<p><strong>Prevention:</strong> Custom DLP keywords (client names, case numbers) block privileged material automatically.</p>
+<h2>4. Financial Services — Customer Records</h2>
+<p>Analysts pasting customer financial data into AI tools for "quick analysis" have triggered GDPR and PCI-DSS exposure — with GDPR fines reaching up to 4% of global revenue.</p>
+<p><strong>Prevention:</strong> Automatic detection of account numbers, card numbers, and transaction IDs.</p>
+<h2>5. Developer Credentials — The 48-Hour Breach</h2>
+<p>A developer pastes code containing a live API key into an AI tool. Keys exposed this way have been harvested and used to compromise production systems within days.</p>
+<p><strong>Prevention:</strong> Credential pattern detection blocks API keys, tokens, and passwords in any prompt.</p>
+<div class="article-callout">📊 <strong>The pattern:</strong> none of these incidents involved malicious insiders. Every one was a well-intentioned employee trying to work faster. That's why technical controls matter more than trust.</div>
+<h2>The Common Fix</h2>
+<p>Every one of these incidents shares the same root cause: no layer between employees and AI providers. A security gateway with real-time DLP scanning addresses all five patterns with one deployment.</p>`
+  },
+  "onprem-vs-cloud": {
+    tag: "Architecture", date: "June 2026",
+    title: "On-Premise vs Cloud AI: What's Right for Your Business in 2026?",
+    body: `
+<p>Every company adopting AI faces the same architectural decision: cloud AI services, on-premise models, or something in between? Here's an honest breakdown.</p>
+<h2>Cloud AI (ChatGPT, Claude API)</h2>
+<p><strong>Strengths:</strong> Best model quality, zero infrastructure, instant scaling, always up to date.</p>
+<p><strong>Weaknesses:</strong> Your prompts travel to external servers. Data residency questions. Per-token costs grow with usage. Compliance teams often object.</p>
+<h2>On-Premise AI (Llama, Mistral)</h2>
+<p><strong>Strengths:</strong> Data never leaves your network. Zero per-prompt cost. Works offline. Full compliance control.</p>
+<p><strong>Weaknesses:</strong> Slightly lower model quality than frontier cloud models. Requires server hardware. You manage updates.</p>
+<h2>The False Choice</h2>
+<p>Most analyses present this as either/or. In practice, the smartest deployment is <strong>hybrid with a governance layer</strong>:</p>
+<ul>
+<li><strong>Routine and sensitive queries</strong> → local models (free, private, offline-capable)</li>
+<li><strong>Complex reasoning and documents</strong> → cloud models, but only after DLP scanning strips or blocks sensitive content</li>
+<li><strong>Everything</strong> → logged in one audit trail on your own server</li>
+</ul>
+<div class="article-callout">💡 With a gateway architecture, the choice per prompt is automatic. Employees pick a model from a dropdown; the platform enforces which data can go where.</div>
+<h2>Cost Comparison (50-person company)</h2>
+<ul>
+<li><strong>Pure cloud:</strong> Per-seat subscriptions or API costs scale linearly — and you still have zero DLP control</li>
+<li><strong>Pure on-premise:</strong> One server (₹1,500–2,000/month VPS or existing hardware), but you lose frontier model quality</li>
+<li><strong>Hybrid gateway:</strong> Local models handle high-volume work free; cloud API costs drop 40–70% because only the queries that need frontier models use them</li>
+</ul>
+<h2>Bottom Line</h2>
+<p>If your company handles sensitive data, the question isn't cloud vs on-premise — it's whether you have a governance layer at all. Start there.</p>`
+  },
+  "governance-checklist": {
+    tag: "Compliance", date: "June 2026",
+    title: "AI Governance Checklist for IT Admins — 25 Things You Need Before Employees Use AI",
+    body: `
+<p>Use this checklist to assess your AI governance readiness. Score yourself: each ✅ is one point.</p>
+<h2>Policy Foundation (5 items)</h2>
+<ul>
+<li>1. Written AI usage policy exists and is under one page</li>
+<li>2. Approved AI tools list is published and current</li>
+<li>3. Data classification tiers defined (green/yellow/red)</li>
+<li>4. Exception approval process documented</li>
+<li>5. Policy reviewed in the last 6 months</li>
+</ul>
+<h2>Technical Controls (7 items)</h2>
+<ul>
+<li>6. DLP scanning on every AI prompt</li>
+<li>7. PII detection (emails, phones, addresses)</li>
+<li>8. Financial data detection (cards, accounts, PAN)</li>
+<li>9. India-specific patterns (Aadhaar, UPI) if applicable</li>
+<li>10. Credential/API key detection</li>
+<li>11. Custom keyword blocking (client names, project codes)</li>
+<li>12. Model access controls per team or role</li>
+</ul>
+<h2>Compliance Readiness (5 items)</h2>
+<ul>
+<li>13. Every AI interaction logged (who, what, when, which model)</li>
+<li>14. Audit logs exportable for review</li>
+<li>15. Log retention meets your regulatory requirement</li>
+<li>16. Data residency documented (where do prompts physically go?)</li>
+<li>17. Vendor data processing agreements reviewed</li>
+</ul>
+<h2>People (4 items)</h2>
+<ul>
+<li>18. Employees trained on AI risks in the last year</li>
+<li>19. Clear reporting channel for AI incidents</li>
+<li>20. Onboarding includes AI policy</li>
+<li>21. Blocked-prompt messages educate rather than just deny</li>
+</ul>
+<h2>Ongoing Operations (4 items)</h2>
+<ul>
+<li>22. Weekly or monthly review of DLP blocks</li>
+<li>23. Usage analytics visible to IT (adoption, models, departments)</li>
+<li>24. Incident response plan covers AI data leaks</li>
+<li>25. Quarterly policy and rules tuning</li>
+</ul>
+<div class="article-callout">📊 <strong>Scoring:</strong> 20–25 = strong governance. 12–19 = gaps to close this quarter. Under 12 = your AI risk is unmanaged — start with technical controls (items 6–12), since they deliver the fastest risk reduction.</div>
+<p>SecureAI Gateway covers items 6–17 and 21–23 out of the box — most companies go from under 12 to over 20 in a single deployment.</p>`
+  }
+};
+
+(function(){
+  const id = new URLSearchParams(location.search).get('id') || 'shadow-ai';
+  const a = ARTICLES[id] || ARTICLES['shadow-ai'];
+  document.title = a.title + ' — SecureAI Gateway Blog';
+  document.getElementById('aTag').textContent = a.tag;
+  document.getElementById('aDate').textContent = a.date;
+  document.getElementById('aTitle').textContent = a.title;
+  document.getElementById('aBody').innerHTML = a.body;
+})();
+</script>
+</body>
+</html>
