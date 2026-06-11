@@ -1,756 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SecureAI Gateway — Enterprise AI Security Platform</title>
-<meta name="description" content="Secure your company's AI usage. On-premise platform with DLP, admin controls, and audit logs. Claude + GPT + free local AI. From ₹3,500/month.">
-<meta property="og:title" content="SecureAI Gateway — Enterprise AI Security Platform">
-<meta property="og:description" content="Your employees are using AI. Is your company data safe? On-premise AI governance platform with built-in DLP protection.">
-<meta property="og:url" content="https://aventrixtechnologies.com">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SecureAI Gateway — Enterprise AI Security Platform | Aventrix Technologies</title>
+<meta name="description" content="Secure your company's AI usage. On-premise platform with DLP protection, admin controls, and audit logs. Claude + GPT + free local AI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;position:relative}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(55,138,221,.1);border:1px solid rgba(55,138,221,.25);color:var(--blue-l);font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;margin-bottom:24px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green-l);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-title{margin-bottom:24px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.trust{display:flex;flex-wrap:wrap;gap:14px}
+.trust-i{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted)}
+
+/* Dashboard mock */
+.dmock{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.7)}
+.dmock-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:var(--bg3);border-bottom:1px solid var(--border)}
+.d{width:10px;height:10px;border-radius:50%}
+.dr{background:#FF5F56}.dy{background:#FFBD2E}.dg{background:#27C93F}
+.dmock-title{font-size:11px;color:var(--muted);margin-left:4px}
+.dmock-body{padding:16px;display:flex;flex-direction:column;gap:10px}
+.dstats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.dstat{background:var(--bg3);border-radius:8px;padding:10px;text-align:center}
+.dval{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700}
+.dlabel{font-size:10px;color:var(--muted);margin-top:2px}
+.dalert{display:flex;align-items:center;gap:10px;background:rgba(229,62,62,.08);border:1px solid rgba(229,62,62,.2);border-radius:8px;padding:10px 12px}
+.at{font-size:12px;font-weight:500}
+.as{font-size:10px;color:var(--muted);margin-top:1px}
+.ab{margin-left:auto;background:rgba(229,62,62,.2);color:var(--red-l);font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px}
+.dbar-row{display:flex;align-items:center;gap:8px}
+.dbar-label{font-size:11px;color:var(--muted);width:90px;flex-shrink:0}
+.dbar{flex:1;height:5px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.dbar-fill{height:100%;border-radius:3px}
+.dbar-pct{font-size:11px;color:var(--muted);width:30px;text-align:right}
+
+/* Stats section */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:52px}
+.stat-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:32px 24px;transition:border-color .2s}
+.stat-card:hover{border-color:var(--border-h)}
+.stat-card.danger{border-color:rgba(229,62,62,.3);background:rgba(229,62,62,.04)}
+.stat-card.danger .stat-num{color:var(--red-l)}
+
+/* Scenarios */
+.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.sc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:20px;font-size:13px;color:var(--muted);line-height:1.6}
+.sc-risk{margin-bottom:12px}
+.sc-divider{text-align:center;font-size:18px;color:var(--dim);margin:8px 0}
+.sc-fix{color:var(--green-l)}
+
+/* Pillars */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.pillar{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:28px 22px;transition:all .2s}
+.pillar:hover{border-color:var(--border-h);transform:translateY(-2px)}
+.pillar-icon{font-size:32px;margin-bottom:16px}
+.pillar h3{font-size:16px;font-weight:600;color:#fff;margin-bottom:8px}
+.pillar p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* How it works */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:26px 22px;transition:border-color .2s}
+.step:hover{border-color:var(--border-h)}
+.step h4{font-size:15px;font-weight:600;color:#fff;margin-bottom:8px}
+.step p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* Industries */
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ind{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:22px;transition:all .2s}
+.ind:hover{border-color:var(--border-h);transform:translateY(-2px)}
+.ind-icon{font-size:28px;margin-bottom:12px;display:block}
+.ind h4{font-size:15px;font-weight:600;color:#fff;margin-bottom:6px}
+.ind p{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* CTA banner */
+.cta-banner{background:linear-gradient(135deg,rgba(55,138,221,.15),rgba(0,212,255,.05));border:1px solid rgba(55,138,221,.3);border-radius:24px;padding:72px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:280px;background:radial-gradient(ellipse,rgba(55,138,221,.12),transparent 70%);pointer-events:none}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.cta-trust{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-cta,.trust{justify-content:center}
+  .pillars,.steps,.ind-grid,.stats-grid,.scenarios{grid-template-columns:1fr 1fr}
+}
+@media(max-width:550px){
+  .pillars,.steps,.ind-grid,.stats-grid,.scenarios{grid-template-columns:1fr}
+  .cta-banner{padding:48px 24px}
+}
+</style>
 </head>
 <body>
+<div class="grid-bg"></div>
 
 <!-- NAV -->
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">
-      <span class="logo-shield">🛡️</span>
-      <span class="logo-text">SecureAI <span class="logo-accent">Gateway</span></span>
-    </a>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="logo">🛡️ SecureAI <span>Gateway</span></a>
     <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#how-it-works">How It Works</a>
-      <a href="#pricing">Pricing</a>
+      <a href="features.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="security.html">Security</a>
       <a href="blog.html">Blog</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
+      <a href="contact.html">Contact</a>
     </div>
     <div class="nav-cta">
-      <a href="#pricing" class="btn-ghost">View Pricing</a>
-      <a href="#contact" class="btn-primary">Start Free Trial</a>
+      <a href="pricing.html" class="btn btn-g">View Plans</a>
+      <a href="contact.html" class="btn btn-p">Start Free Trial</a>
     </div>
-    <button class="nav-burger" onclick="toggleMenu()">☰</button>
+    <button class="burger" onclick="toggleMenu()">☰</button>
   </div>
-  <div class="nav-mobile" id="navMobile">
-    <a href="#features">Features</a>
-    <a href="#how-it-works">How It Works</a>
-    <a href="#pricing">Pricing</a>
+  <div class="mob-menu" id="mobMenu">
+    <a href="features.html">Features</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="security.html">Security</a>
     <a href="blog.html">Blog</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-    <a href="#contact" class="btn-primary" style="margin-top:8px">Start Free Trial</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn btn-p" style="text-align:center;margin-top:4px">Start Free Trial</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-grid-bg"></div>
   <div class="container">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
-      Enterprise AI Governance · Made in India
-    </div>
-    <h1 class="hero-title">
-      Your Employees Are<br>
-      Using AI. Is Your<br>
-      <span class="gradient-text">Company Data Safe?</span>
-    </h1>
-    <p class="hero-sub">
-      SecureAI Gateway gives your entire company access to Claude, ChatGPT, and local AI models — with full DLP protection, admin controls, and audit logs. All running on your own server.
-    </p>
-    <div class="hero-cta">
-      <a href="#contact" class="btn-primary btn-lg">
-        Start Free 7-Day Trial
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="#how-it-works" class="btn-ghost btn-lg">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 5.5L10.5 8l-4 2.5V5.5z" fill="currentColor"/></svg>
-        Watch How It Works
-      </a>
-    </div>
-    <div class="hero-trust">
-      <div class="trust-item">
-        <span class="trust-icon">🔒</span>
-        <span>On-Premise — Data Never Leaves Your Server</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">⚡</span>
-        <span>Live in 20 Minutes — Single .EXE Installer</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">🤖</span>
-        <span>Claude + GPT-4o + Free Local AI</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">✅</span>
-        <span>DLP Protection Built-In</span>
-      </div>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <div class="dashboard-mock">
-      <div class="mock-header">
-        <div class="mock-dot red"></div>
-        <div class="mock-dot yellow"></div>
-        <div class="mock-dot green"></div>
-        <span class="mock-title">SecureAI Gateway — Admin Panel</span>
-      </div>
-      <div class="mock-body">
-        <div class="mock-stat-row">
-          <div class="mock-stat">
-            <div class="mock-stat-val green-text">1,247</div>
-            <div class="mock-stat-label">Prompts Today</div>
-          </div>
-          <div class="mock-stat">
-            <div class="mock-stat-val red-text">23</div>
-            <div class="mock-stat-label">DLP Blocks</div>
-          </div>
-          <div class="mock-stat">
-            <div class="mock-stat-val blue-text">48</div>
-            <div class="mock-stat-label">Active Users</div>
-          </div>
+    <div class="hero-inner">
+      <div>
+        <div class="badge"><span class="dot"></span> Enterprise AI Security · Made in India 🇮🇳</div>
+        <h1 class="h1 hero-title">
+          Your Employees<br>Are Using AI.<br>
+          <span class="grad-text">Is Your Data Safe?</span>
+        </h1>
+        <p class="lead" style="margin-bottom:32px">SecureAI Gateway gives your entire company access to Claude, ChatGPT, and local AI — with full DLP protection, admin controls, and audit logs. All on your own server.</p>
+        <div class="hero-cta">
+          <a href="contact.html" class="btn btn-p btn-lg">Start Free 7-Day Trial →</a>
+          <a href="features.html" class="btn btn-g btn-lg">See How It Works</a>
         </div>
-        <div class="mock-alert">
-          <span class="alert-icon">🛡️</span>
-          <div>
-            <div class="alert-title">DLP Block — Credit Card Detected</div>
-            <div class="alert-sub">User: sharma@company.com · Model: Claude · 2 min ago</div>
+        <div class="trust">
+          <div class="trust-i">🔒 Data Never Leaves Your Server</div>
+          <div class="trust-i">⚡ Live in 20 Minutes</div>
+          <div class="trust-i">🤖 Claude + GPT-4o + Free Local AI</div>
+          <div class="trust-i">✅ DLP Protection Built-In</div>
+        </div>
+      </div>
+      <div>
+        <div class="dmock">
+          <div class="dmock-bar">
+            <div class="d dr"></div><div class="d dy"></div><div class="d dg"></div>
+            <span class="dmock-title">SecureAI Gateway — Admin Panel</span>
           </div>
-          <span class="alert-badge">Blocked</span>
-        </div>
-        <div class="mock-alert">
-          <span class="alert-icon">🛡️</span>
-          <div>
-            <div class="alert-title">DLP Block — Aadhaar Number Detected</div>
-            <div class="alert-sub">User: priya@company.com · Model: GPT-4o · 5 min ago</div>
+          <div class="dmock-body">
+            <div class="dstats">
+              <div class="dstat"><div class="dval" style="color:var(--green-l)">1,247</div><div class="dlabel">Prompts Today</div></div>
+              <div class="dstat"><div class="dval" style="color:var(--red-l)">23</div><div class="dlabel">DLP Blocks</div></div>
+              <div class="dstat"><div class="dval" style="color:var(--blue-l)">48</div><div class="dlabel">Active Users</div></div>
+            </div>
+            <div class="dalert">
+              <span style="font-size:16px">🛡️</span>
+              <div><div class="at">DLP Block — Credit Card Detected</div><div class="as">sharma@co.com · Claude · 2 min ago</div></div>
+              <div class="ab">Blocked</div>
+            </div>
+            <div class="dalert">
+              <span style="font-size:16px">🛡️</span>
+              <div><div class="at">DLP Block — Aadhaar Number Detected</div><div class="as">priya@co.com · GPT-4o · 5 min ago</div></div>
+              <div class="ab">Blocked</div>
+            </div>
+            <div class="dbar-row"><span class="dbar-label">Claude Sonnet</span><div class="dbar"><div class="dbar-fill" style="width:65%;background:var(--blue)"></div></div><span class="dbar-pct">65%</span></div>
+            <div class="dbar-row"><span class="dbar-label">GPT-4o</span><div class="dbar"><div class="dbar-fill" style="width:25%;background:var(--green)"></div></div><span class="dbar-pct">25%</span></div>
+            <div class="dbar-row"><span class="dbar-label">Llama (Free)</span><div class="dbar"><div class="dbar-fill" style="width:10%;background:#805AD5"></div></div><span class="dbar-pct">10%</span></div>
           </div>
-          <span class="alert-badge">Blocked</span>
-        </div>
-        <div class="mock-bar-row">
-          <span class="mock-bar-label">Claude Sonnet</span>
-          <div class="mock-bar"><div class="mock-bar-fill" style="width:65%"></div></div>
-          <span class="mock-bar-pct">65%</span>
-        </div>
-        <div class="mock-bar-row">
-          <span class="mock-bar-label">GPT-4o</span>
-          <div class="mock-bar"><div class="mock-bar-fill" style="width:25%;background:#10B981"></div></div>
-          <span class="mock-bar-pct">25%</span>
-        </div>
-        <div class="mock-bar-row">
-          <span class="mock-bar-label">Llama (Local)</span>
-          <div class="mock-bar"><div class="mock-bar-fill" style="width:10%;background:#8B5CF6"></div></div>
-          <span class="mock-bar-pct">10%</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROBLEM STATS -->
-<section class="stats-section">
+<!-- PROBLEM -->
+<section class="alt">
   <div class="container">
-    <p class="stats-eyebrow">The Shadow AI Problem</p>
-    <h2 class="stats-title">83% of companies have no controls over how employees use AI. Is yours one of them?</h2>
+    <div class="eyebrow reveal">The Shadow AI Crisis</div>
+    <h2 class="h2 reveal">83% of companies have no controls over how employees use AI.</h2>
+    <p class="lead reveal" style="margin-bottom:48px">When employees use ChatGPT without oversight, sensitive data quietly flows to third-party servers — creating massive compliance and security risks.</p>
     <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-number">83<span class="stat-pct">%</span></div>
+      <div class="stat-card reveal">
+        <div class="stat-num">83<span style="font-size:30px">%</span></div>
         <div class="stat-label">Companies with zero AI governance</div>
-        <div class="stat-desc">Employees using ChatGPT freely with no controls or monitoring</div>
+        <div class="stat-desc">Employees using ChatGPT freely with no IT oversight or monitoring</div>
       </div>
-      <div class="stat-card stat-card-accent">
-        <div class="stat-number">₹38<span class="stat-pct">Cr+</span></div>
+      <div class="stat-card danger reveal">
+        <div class="stat-num">₹38<span style="font-size:30px">Cr+</span></div>
         <div class="stat-label">Average cost of a Shadow AI breach</div>
         <div class="stat-desc">One leaked customer database through an AI tool costs millions</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-number">10<span class="stat-pct">min</span></div>
+      <div class="stat-card reveal">
+        <div class="stat-num">10<span style="font-size:30px">min</span></div>
         <div class="stat-label">Time it takes for data to leak</div>
-        <div class="stat-desc">Employee pastes confidential doc into ChatGPT — data stored instantly</div>
+        <div class="stat-desc">Employee pastes a document — data stored on external servers instantly</div>
       </div>
     </div>
-    <div class="scenario-grid">
-      <div class="scenario-card">
-        <div class="scenario-risk">
-          <div class="scenario-tag risk">⚠️ The Risk</div>
-          <p>Employee pastes customer database into ChatGPT to 'clean up the data'</p>
-          <p class="risk-text">Customer PII sent to OpenAI servers — GDPR violation, potential ₹2 crore fine</p>
-        </div>
-        <div class="scenario-arrow">→</div>
-        <div class="scenario-safe">
-          <div class="scenario-tag safe">🛡️ With SecureAI Gateway</div>
-          <p class="safe-text">DLP auto-detects PII, blocks prompt, logs the incident — zero data leaked</p>
-        </div>
+    <div class="scenarios">
+      <div class="sc reveal">
+        <div class="sc-risk"><span class="tag tag-red" style="margin-bottom:8px">⚠️ The Risk</span><br>Employee pastes customer database into ChatGPT to clean up data.<br><span style="color:var(--red-l);font-size:12px">Customer PII sent to OpenAI — GDPR violation, ₹2Cr+ fine</span></div>
+        <div class="sc-divider">↓</div>
+        <div><span class="tag tag-green" style="margin-bottom:8px">🛡️ With SecureAI</span><br><span class="sc-fix">DLP auto-detects PII, blocks prompt, logs incident — zero data leaked</span></div>
       </div>
-      <div class="scenario-card">
-        <div class="scenario-risk">
-          <div class="scenario-tag risk">⚠️ The Risk</div>
-          <p>Developer uses AI to review code containing API keys and credentials</p>
-          <p class="risk-text">API keys exposed — production database compromised within 48 hours</p>
-        </div>
-        <div class="scenario-arrow">→</div>
-        <div class="scenario-safe">
-          <div class="scenario-tag safe">🛡️ With SecureAI Gateway</div>
-          <p class="safe-text">DLP detects credential patterns, blocks the prompt before it reaches AI</p>
-        </div>
+      <div class="sc reveal">
+        <div class="sc-risk"><span class="tag tag-red" style="margin-bottom:8px">⚠️ The Risk</span><br>Developer uses AI to review code containing API keys and credentials.<br><span style="color:var(--red-l);font-size:12px">Keys exposed — production database breached within 48 hours</span></div>
+        <div class="sc-divider">↓</div>
+        <div><span class="tag tag-green" style="margin-bottom:8px">🛡️ With SecureAI</span><br><span class="sc-fix">Credential pattern detected, blocked before reaching any AI provider</span></div>
       </div>
-      <div class="scenario-card">
-        <div class="scenario-risk">
-          <div class="scenario-tag risk">⚠️ The Risk</div>
-          <p>HR manager uses ChatGPT to draft offer letters with real salary data</p>
-          <p class="risk-text">Employee salary data stored on OpenAI servers indefinitely</p>
-        </div>
-        <div class="scenario-arrow">→</div>
-        <div class="scenario-safe">
-          <div class="scenario-tag safe">🛡️ With SecureAI Gateway</div>
-          <p class="safe-text">Policy blocks salary data from leaving company — compliant always</p>
-        </div>
+      <div class="sc reveal">
+        <div class="sc-risk"><span class="tag tag-red" style="margin-bottom:8px">⚠️ The Risk</span><br>HR uses ChatGPT to draft offer letters with real salary data.<br><span style="color:var(--red-l);font-size:12px">Salary data stored on OpenAI servers indefinitely</span></div>
+        <div class="sc-divider">↓</div>
+        <div><span class="tag tag-green" style="margin-bottom:8px">🛡️ With SecureAI</span><br><span class="sc-fix">Policy blocks salary data from leaving company — always compliant</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- WHAT IS IT -->
-<section class="product-intro">
+<section class="dark">
   <div class="container">
-    <p class="section-eyebrow">The Solution</p>
-    <h2 class="section-title">The Private AI Platform That Keeps Your Data Where It Belongs — <span class="gradient-text">On Your Server.</span></h2>
-    <p class="section-sub">SecureAI Gateway is enterprise AI access software that runs entirely on your company's own server. Every employee gets a professional AI chat interface. Every prompt passes through intelligent DLP scanning. Every interaction is logged for compliance. And your IT team has complete control.</p>
-    <div class="pillars-grid">
-      <div class="pillar-card">
-        <div class="pillar-icon">🛡️</div>
-        <h3>Secure by Default</h3>
-        <p>Every prompt automatically scanned for 50+ types of sensitive data before reaching any AI provider.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-icon">⚙️</div>
-        <h3>Complete IT Control</h3>
-        <p>Admin panel to manage users, set policies, restrict models, view audit logs, and control every aspect of AI usage.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-icon">🤖</div>
-        <h3>Multi-Model Access</h3>
-        <p>Claude Sonnet 4.6, GPT-4o, and free local models (Llama, Mistral) — all in one interface. One cost.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-icon">🏠</div>
-        <h3>On-Premise Privacy</h3>
-        <p>Your data never leaves your server. No cloud dependencies. No third-party storage. 100% yours.</p>
-      </div>
+    <div class="eyebrow reveal">The Solution</div>
+    <h2 class="h2 reveal">The Private AI Platform That Keeps Your Data <span class="grad-text">On Your Server.</span></h2>
+    <p class="lead reveal" style="margin-bottom:48px">SecureAI Gateway runs entirely on your company's own server. Every prompt scanned. Every action logged. IT team in full control.</p>
+    <div class="pillars">
+      <div class="pillar reveal"><div class="pillar-icon">🛡️</div><h3>Secure by Default</h3><p>Every prompt scanned for 50+ types of sensitive data before reaching any AI provider.</p></div>
+      <div class="pillar reveal"><div class="pillar-icon">⚙️</div><h3>Complete IT Control</h3><p>Manage users, set policies, restrict models, view audit logs — from one admin panel.</p></div>
+      <div class="pillar reveal"><div class="pillar-icon">🤖</div><h3>Multi-Model Access</h3><p>Claude Sonnet 4.6, GPT-4o, and free local models (Llama, Mistral) — all in one interface.</p></div>
+      <div class="pillar reveal"><div class="pillar-icon">🏠</div><h3>On-Premise Privacy</h3><p>Your data never leaves your server. No cloud dependencies. No third-party storage.</p></div>
     </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="features" id="features">
-  <div class="container">
-    <p class="section-eyebrow">Core Features</p>
-    <h2 class="section-title">Everything Your IT Team Needs to Govern AI.</h2>
-
-    <div class="feature-block">
-      <div class="feature-content">
-        <div class="feature-tag">Data Loss Prevention</div>
-        <h3>Stop Data Leaks Before They Happen — Automatically</h3>
-        <p>Our built-in DLP engine powered by Microsoft Presidio scans every AI prompt in real-time. Before any text reaches Claude, ChatGPT, or any AI provider, our engine checks for over 50 types of sensitive information.</p>
-        <div class="dlp-grid">
-          <div class="dlp-col">
-            <div class="dlp-title">Financial Data</div>
-            <div class="dlp-item">✓ Credit card numbers</div>
-            <div class="dlp-item">✓ Bank account numbers</div>
-            <div class="dlp-item">✓ UPI transaction IDs</div>
-            <div class="dlp-item">✓ PAN card numbers</div>
-            <div class="dlp-item">✓ Salary and payroll data</div>
-          </div>
-          <div class="dlp-col">
-            <div class="dlp-title">Personal Data</div>
-            <div class="dlp-item">✓ Aadhaar card numbers</div>
-            <div class="dlp-item">✓ Passport numbers</div>
-            <div class="dlp-item">✓ Phone numbers</div>
-            <div class="dlp-item">✓ Email addresses</div>
-            <div class="dlp-item">✓ Custom keywords + regex</div>
-          </div>
-        </div>
-      </div>
-      <div class="feature-visual">
-        <div class="dlp-demo">
-          <div class="dlp-demo-header">DLP Engine — Live Scanning</div>
-          <div class="dlp-demo-prompt">
-            <span class="prompt-safe">Please analyze this customer feedback and summarize key themes. The customer </span><span class="prompt-flagged">Aadhaar: 4567 8901 2345</span><span class="prompt-safe"> reported issues with...</span>
-          </div>
-          <div class="dlp-demo-result blocked">
-            <span>🚫 BLOCKED — Aadhaar Number Detected</span>
-            <span class="dlp-action">Action: Block · Logged · Admin Notified</span>
-          </div>
-          <div class="dlp-demo-prompt" style="margin-top:12px">
-            <span class="prompt-safe">Summarize this quarterly report and highlight the key growth metrics for Q3.</span>
-          </div>
-          <div class="dlp-demo-result allowed">
-            <span>✅ ALLOWED — No sensitive data detected</span>
-            <span class="dlp-action">Forwarded to Claude Sonnet 4.6</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feature-block reverse">
-      <div class="feature-content">
-        <div class="feature-tag">Multi-Model AI</div>
-        <h3>One Platform. Every AI Model. Your Choice.</h3>
-        <p>Instead of paying for separate ChatGPT and Claude subscriptions, SecureAI Gateway gives your team access to multiple AI models in one secure interface.</p>
-        <div class="model-table">
-          <div class="model-row header">
-            <span>Model</span><span>Best For</span><span>Cost</span>
-          </div>
-          <div class="model-row">
-            <span><strong>Claude Sonnet 4.6</strong></span>
-            <span>Documents, analysis, complex reasoning</span>
-            <span class="cost-paid">Paid API</span>
-          </div>
-          <div class="model-row">
-            <span><strong>GPT-4o</strong></span>
-            <span>General tasks, creative writing, coding</span>
-            <span class="cost-paid">Paid API</span>
-          </div>
-          <div class="model-row">
-            <span><strong>Llama 3.2</strong></span>
-            <span>Sensitive queries, high-volume tasks</span>
-            <span class="cost-free">FREE — Local</span>
-          </div>
-          <div class="model-row">
-            <span><strong>Mistral</strong></span>
-            <span>Alternative local, multilingual</span>
-            <span class="cost-free">FREE — Local</span>
-          </div>
-        </div>
-      </div>
-      <div class="feature-visual">
-        <div class="model-selector-mock">
-          <div class="ms-header">Employee Chat Interface</div>
-          <div class="ms-model-pick">
-            <div class="ms-model active">🟣 Claude Sonnet 4.6</div>
-            <div class="ms-model">🟢 GPT-4o</div>
-            <div class="ms-model">🔵 Llama 3.2 (Free)</div>
-          </div>
-          <div class="ms-chat">
-            <div class="ms-msg user">Summarize our Q3 financial report</div>
-            <div class="ms-msg ai">Based on the Q3 report, key highlights include: revenue grew 23% YoY reaching ₹4.2Cr, EBITDA margins improved to 18%...</div>
-          </div>
-          <div class="ms-protected">🛡️ DLP Protected · All prompts scanned · Audit logged</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feature-block">
-      <div class="feature-content">
-        <div class="feature-tag">Complete Audit Logs</div>
-        <h3>Built for Companies That Take Compliance Seriously</h3>
-        <p>Every AI interaction logged with timestamp, user, model, result. CSV export for auditor review. Prove compliance with HIPAA, GDPR, DPDP, SOC 2 — out of the box.</p>
-        <div class="compliance-grid">
-          <div class="compliance-item">
-            <span class="comp-icon">🏥</span>
-            <span>HIPAA Ready</span>
-          </div>
-          <div class="compliance-item">
-            <span class="comp-icon">🇪🇺</span>
-            <span>GDPR Compliant</span>
-          </div>
-          <div class="compliance-item">
-            <span class="comp-icon">🇮🇳</span>
-            <span>DPDP Act</span>
-          </div>
-          <div class="compliance-item">
-            <span class="comp-icon">🔐</span>
-            <span>SOC 2 Ready</span>
-          </div>
-          <div class="compliance-item">
-            <span class="comp-icon">💳</span>
-            <span>PCI-DSS</span>
-          </div>
-          <div class="compliance-item">
-            <span class="comp-icon">📋</span>
-            <span>ISO 27001</span>
-          </div>
-        </div>
-      </div>
-      <div class="feature-visual">
-        <div class="audit-mock">
-          <div class="audit-header">Audit Log — Last 24 Hours</div>
-          <div class="audit-row">
-            <span class="audit-user">sharma@co.com</span>
-            <span class="audit-model">Claude</span>
-            <span class="audit-status allowed-badge">Allowed</span>
-            <span class="audit-time">2 min ago</span>
-          </div>
-          <div class="audit-row">
-            <span class="audit-user">priya@co.com</span>
-            <span class="audit-model">GPT-4o</span>
-            <span class="audit-status blocked-badge">Blocked</span>
-            <span class="audit-time">5 min ago</span>
-          </div>
-          <div class="audit-row">
-            <span class="audit-user">raj@co.com</span>
-            <span class="audit-model">Llama</span>
-            <span class="audit-status allowed-badge">Allowed</span>
-            <span class="audit-time">12 min ago</span>
-          </div>
-          <div class="audit-row">
-            <span class="audit-user">meera@co.com</span>
-            <span class="audit-model">Claude</span>
-            <span class="audit-status blocked-badge">Blocked</span>
-            <span class="audit-time">18 min ago</span>
-          </div>
-          <div class="audit-export">📥 Export to CSV for auditors</div>
-        </div>
-      </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="features.html" class="btn btn-g btn-lg">Explore All Features →</a>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="how-it-works" id="how-it-works">
+<section class="alt">
   <div class="container">
-    <p class="section-eyebrow">The Process</p>
-    <h2 class="section-title">How SecureAI Gateway Works</h2>
-    <p class="section-sub">Every prompt goes through a 6-step security process in milliseconds. Employees see no delay. IT admins see everything.</p>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <h4>Employee Opens SecureAI</h4>
-        <p>Opens web browser or Windows app. Logs in with company email and password.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <h4>Types a Prompt</h4>
-        <p>Employee types their question or pastes content. Can also attach PDFs, images, or documents.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <h4>DLP Scans Instantly</h4>
-        <p>Our engine scans every word for credit cards, Aadhaar, SSNs, emails, phone numbers, and custom rules — in milliseconds.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">04</div>
-        <h4>Policy Decision</h4>
-        <p>If clean: prompt proceeds. If sensitive data detected: blocked with clear message. Employee sees exactly why.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">05</div>
-        <h4>AI Responds</h4>
-        <p>Clean prompts reach Claude, GPT-4o, or local AI. Response returned to employee instantly.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">06</div>
-        <h4>Everything Logged</h4>
-        <p>Full audit trail: who asked what, when, which model, DLP result. Always available to IT admin.</p>
-      </div>
+    <div class="eyebrow reveal">How It Works</div>
+    <h2 class="h2 reveal">6-Step Security Process in Milliseconds</h2>
+    <p class="lead reveal" style="margin-bottom:48px">Employees see no delay. IT admins see everything.</p>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">01</div><h4>Employee Opens SecureAI</h4><p>Opens web browser or Windows app. Logs in with company email and password.</p></div>
+      <div class="step reveal"><div class="step-num">02</div><h4>Types a Prompt</h4><p>Employee types their question or pastes content. Can attach PDFs, images, or documents.</p></div>
+      <div class="step reveal"><div class="step-num">03</div><h4>DLP Scans Instantly</h4><p>Engine scans every word for credit cards, Aadhaar, SSNs, emails, phone numbers — in milliseconds.</p></div>
+      <div class="step reveal"><div class="step-num">04</div><h4>Policy Decision</h4><p>If clean: prompt proceeds. If sensitive data found: blocked with clear message explaining why.</p></div>
+      <div class="step reveal"><div class="step-num">05</div><h4>AI Responds</h4><p>Clean prompts reach Claude, GPT-4o, or local AI. Response returned to employee instantly.</p></div>
+      <div class="step reveal"><div class="step-num">06</div><h4>Everything Logged</h4><p>Full audit trail: who, what, when, which model, DLP result. Always available to IT admin.</p></div>
     </div>
-    <div class="architecture-note">
-      <span class="arch-icon">💡</span>
-      <strong>Key point:</strong> Steps 1–5 and the logging all happen <strong>on your server</strong>. Only the clean, DLP-verified prompt reaches the AI provider. Your sensitive data never leaves your network.
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <div class="container">
-    <p class="section-eyebrow">Simple Pricing</p>
-    <h2 class="section-title">No Hidden Fees. No Surprises.</h2>
-    <p class="section-sub">Start with a 7-day free trial on any plan. No credit card required.</p>
-    <p class="section-sub" style="text-align:center;margin:0 auto 48px">All plans include a 7-day free trial. Contact our team for exact pricing tailored to your company size.</p>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-name">Starter</div>
-        <div class="price-desc">Small teams up to 10 users</div>
-        <div class="price-amount">
-          <span class="amount enterprise-price">Talk to Sales</span>
-        </div>
-        <a href="#contact" class="btn-price">Contact Sales Team →</a>
-        <div class="price-features">
-          <div class="pf-item">✅ Up to 10 users</div>
-          <div class="pf-item">✅ 20 prompts/user/day</div>
-          <div class="pf-item">✅ Claude + GPT-4o + Local AI</div>
-          <div class="pf-item">✅ Standard DLP (50+ types)</div>
-          <div class="pf-item">✅ Windows Desktop App</div>
-          <div class="pf-item">✅ 90-day audit logs</div>
-          <div class="pf-item">✅ Email support</div>
-          <div class="pf-item muted">❌ Custom DLP rules</div>
-          <div class="pf-item muted">❌ BYOK mode</div>
-        </div>
-      </div>
-      <div class="price-card featured">
-        <div class="popular-badge">Most Popular</div>
-        <div class="price-name">Business</div>
-        <div class="price-desc">Growing companies, unlimited users</div>
-        <div class="price-amount">
-          <span class="amount enterprise-price">Talk to Sales</span>
-        </div>
-        <a href="#contact" class="btn-price-featured">Contact Sales Team →</a>
-        <div class="price-features">
-          <div class="pf-item">✅ Unlimited users</div>
-          <div class="pf-item">✅ 50 prompts/user/day</div>
-          <div class="pf-item">✅ Claude + GPT-4o + Local AI</div>
-          <div class="pf-item">✅ Standard + Custom DLP</div>
-          <div class="pf-item">✅ Windows Desktop App</div>
-          <div class="pf-item">✅ 1-year audit logs + CSV export</div>
-          <div class="pf-item">✅ Department management</div>
-          <div class="pf-item">✅ BYOK (own API keys)</div>
-          <div class="pf-item">✅ Email + Chat support</div>
-        </div>
-      </div>
-      <div class="price-card">
-        <div class="price-name">Enterprise</div>
-        <div class="price-desc">Large companies, custom requirements</div>
-        <div class="price-amount">
-          <span class="amount enterprise-price">Talk to Sales</span>
-        </div>
-        <a href="#contact" class="btn-price">Contact Sales Team →</a>
-        <div class="price-features">
-          <div class="pf-item">✅ Unlimited users + prompts</div>
-          <div class="pf-item">✅ All models + custom integration</div>
-          <div class="pf-item">✅ Advanced DLP + custom patterns</div>
-          <div class="pf-item">✅ Unlimited audit log retention</div>
-          <div class="pf-item">✅ SSO / SAML integration</div>
-          <div class="pf-item">✅ White-label branding</div>
-          <div class="pf-item">✅ Dedicated account manager</div>
-          <div class="pf-item">✅ 99.9% SLA + custom terms</div>
-          <div class="pf-item">✅ BAA for HIPAA compliance</div>
-        </div>
-      </div>
-    </div>
-    <div class="pricing-note">
-      GST invoice provided · UPI, bank transfer, credit card accepted · Cancel anytime
+    <div style="background:rgba(55,138,221,.08);border:1px solid rgba(55,138,221,.2);border-radius:var(--r);padding:20px 24px;display:flex;gap:12px;align-items:flex-start;margin-top:36px" class="reveal">
+      <span style="font-size:20px;flex-shrink:0">💡</span>
+      <p style="font-size:15px;color:var(--muted)">Steps 1–5 and logging all happen <strong style="color:var(--text)">on your server</strong>. Only the clean, DLP-verified prompt reaches the AI provider. Your sensitive data never leaves your network.</p>
     </div>
   </div>
 </section>
 
 <!-- INDUSTRIES -->
-<section class="industries">
+<section class="dark">
   <div class="container">
-    <p class="section-eyebrow">Who Uses SecureAI Gateway</p>
-    <h2 class="section-title">Built for Any Industry That Values Data Privacy</h2>
-    <div class="industry-grid">
-      <div class="industry-card">
-        <span class="ind-icon">⚖️</span>
-        <h4>Legal Firms</h4>
-        <p>Attorney-client privilege protected. All client names and case details blocked from reaching external AI.</p>
-      </div>
-      <div class="industry-card">
-        <span class="ind-icon">🏥</span>
-        <h4>Healthcare</h4>
-        <p>HIPAA-compliant AI usage. Patient data stays on-premise. Audit logs prove compliance to regulators.</p>
-      </div>
-      <div class="industry-card">
-        <span class="ind-icon">🏦</span>
-        <h4>Finance & Banking</h4>
-        <p>Customer financial data never leaves your network. PCI-DSS compliant. Complete audit trail.</p>
-      </div>
-      <div class="industry-card">
-        <span class="ind-icon">💻</span>
-        <h4>IT & MSP Companies</h4>
-        <p>Client credentials and infrastructure details stay protected. Source code scanning prevents key leaks.</p>
-      </div>
-      <div class="industry-card">
-        <span class="ind-icon">📊</span>
-        <h4>Consulting Firms</h4>
-        <p>Client confidentiality maintained. NDA compliance automated. Proprietary methodologies protected.</p>
-      </div>
-      <div class="industry-card">
-        <span class="ind-icon">🏭</span>
-        <h4>Manufacturing</h4>
-        <p>Trade secrets and supplier data protected. Production information never enters public AI systems.</p>
-      </div>
+    <div class="eyebrow reveal">Who Uses SecureAI Gateway</div>
+    <h2 class="h2 reveal">Built for Any Industry That Values Data Privacy</h2>
+    <div class="ind-grid" style="margin-top:40px">
+      <div class="ind reveal"><span class="ind-icon">⚖️</span><h4>Legal Firms</h4><p>Attorney-client privilege protected. Client names and case details blocked from external AI.</p></div>
+      <div class="ind reveal"><span class="ind-icon">🏥</span><h4>Healthcare</h4><p>HIPAA-compliant AI usage. Patient data stays on-premise. Audit logs prove compliance.</p></div>
+      <div class="ind reveal"><span class="ind-icon">🏦</span><h4>Finance & Banking</h4><p>Customer financial data never leaves your network. PCI-DSS compliant by design.</p></div>
+      <div class="ind reveal"><span class="ind-icon">💻</span><h4>IT & MSP Companies</h4><p>Client credentials and infrastructure details protected. Source code key scanning.</p></div>
+      <div class="ind reveal"><span class="ind-icon">📊</span><h4>Consulting Firms</h4><p>Client confidentiality maintained. NDA compliance automated. Methodologies protected.</p></div>
+      <div class="ind reveal"><span class="ind-icon">🏭</span><h4>Manufacturing</h4><p>Trade secrets and supplier data protected. Production info never enters public AI.</p></div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq" id="faq">
+<!-- CTA -->
+<section class="alt">
   <div class="container">
-    <p class="section-eyebrow">Common Questions</p>
-    <h2 class="section-title">Everything You Need to Know</h2>
-    <div class="faq-categories">
-      <button class="faq-cat active" onclick="filterFAQ('all')">All Questions</button>
-      <button class="faq-cat" onclick="filterFAQ('general')">General</button>
-      <button class="faq-cat" onclick="filterFAQ('technical')">Technical</button>
-      <button class="faq-cat" onclick="filterFAQ('security')">Security</button>
-      <button class="faq-cat" onclick="filterFAQ('pricing')">Pricing</button>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item" data-cat="general">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          What exactly is SecureAI Gateway?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          SecureAI Gateway is enterprise AI access software that runs on your company's own server. It gives every employee a professional AI chat interface (like ChatGPT but secured), while automatically scanning every prompt for sensitive data before it reaches any AI provider. Your IT team gets complete visibility and control over all AI usage.
-        </div>
-      </div>
-      <div class="faq-item" data-cat="general">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          Why not just use ChatGPT or Claude directly?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          ChatGPT and Claude send your data to OpenAI/Anthropic servers. Your conversations are stored on their systems. There are no controls preventing employees from leaking sensitive data — customer records, financial documents, source code. SecureAI Gateway sits between your employees and these AI tools, scanning everything and blocking leaks before they happen.
-        </div>
-      </div>
-      <div class="faq-item" data-cat="technical">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          How long does installation take?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          20 minutes. You run a single .EXE installer on your Windows server. It automatically installs Docker, PostgreSQL, Redis, Keycloak, the DLP engine, and all components. No manual configuration needed. Your IT admin just enters the license key and the system sets itself up. Within 20 minutes, employees can start using it.
-        </div>
-      </div>
-      <div class="faq-item" data-cat="technical">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          What server do we need?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Any Windows server (2019/2022) or Windows 10/11 Pro with 8GB RAM minimum (16GB recommended) and 50GB free disk space. Most companies already have a suitable server. If not, a ₹1,500–2,000/month VPS from AWS, Azure, or a local provider works perfectly.
-        </div>
-      </div>
-      <div class="faq-item" data-cat="technical">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          What AI models are supported?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Currently: Claude Sonnet 4.6 (Anthropic), GPT-4o (OpenAI), Llama 3.2 (local — free), and Mistral (local — free). We add new models regularly. Local models run entirely on your server with zero API costs and maximum privacy. Cloud models (Claude, GPT) go through DLP scanning before the clean prompt reaches the provider.
-        </div>
-      </div>
-      <div class="faq-item" data-cat="technical">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          What happens if our internet goes down?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Local AI models (Llama, Mistral) continue working completely offline — they run on your server. Cloud models (Claude, GPT) are unavailable until internet returns. Your employees can still access conversation history. The system keeps running; only the cloud AI calls are interrupted.
-        </div>
-      </div>
-      <div class="faq-item" data-cat="security">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          Can Aventrix Technologies see our company's data?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          No. SecureAI Gateway runs entirely on your server. We have zero visibility into your employees' prompts, audit logs, or company data. We can't access your installation remotely without your explicit invitation. We only know you exist as a paying customer. Your data is 100% yours.
-        </div>
-      </div>
-      <div class="faq-item" data-cat="security">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          How does the DLP engine work?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          We use Microsoft Presidio, the industry-standard open-source PII detection engine used by major enterprises. It detects 50+ types of sensitive data out of the box — credit cards, Aadhaar, PAN, SSNs, emails, phone numbers, and more. IT admins can add custom keywords (project codenames, client names) and custom regex patterns for your internal data formats.
-        </div>
-      </div>
-      <div class="faq-item" data-cat="security">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          Do you support Indian compliance requirements?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Yes. We built SecureAI Gateway with the Indian market in mind. DLP detects Aadhaar numbers, PAN card numbers, UPI transaction IDs, and other India-specific data formats. We support DPDP Act compliance with data residency controls and audit logging. GST invoices provided. INR billing available.
-        </div>
-      </div>
-      <div class="faq-item" data-cat="security">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          What happens to blocked prompts?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Blocked prompts are logged with full details (who, what, when, why) but NOT sent to any AI provider. The employee sees a clear warning explaining exactly what was blocked and why. IT admins can review all blocks in the admin dashboard in real-time. No data is ever sent to AI after a block decision.
-        </div>
-      </div>
-      <div class="faq-item" data-cat="pricing">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          Is there really a free trial? What's included?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Yes — 7 full days with all features on your chosen plan. No credit card required. You get full access to Claude, GPT-4o, and local models (20 prompts/user/day during trial), complete DLP protection, admin panel, and Windows desktop app. You can test with your real team and real data before deciding.
-        </div>
-      </div>
-      <div class="faq-item" data-cat="pricing">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          Do we pay extra for AI model usage?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Starter plan includes pool mode — model costs included in your plan. Business and Enterprise plans recommend BYOK (Bring Your Own Keys) — you enter your own Anthropic/OpenAI API keys and pay those providers directly. Typical usage is ₹400–1,200/user/month in API costs. Local models (Llama, Mistral) are always free regardless of plan.
-        </div>
-      </div>
-      <div class="faq-item" data-cat="pricing">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          What payment methods do you accept?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Credit/debit card, UPI, bank transfer (NEFT/RTGS), and for Enterprise customers — purchase orders and invoicing with net-30 terms. GST invoice provided for all Indian businesses. Annual prepay available with 10% discount.
-        </div>
-      </div>
-      <div class="faq-item" data-cat="pricing">
-        <button class="faq-question" onclick="toggleFAQ(this)">
-          What if your company shuts down? Do we lose access?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          No. SecureAI Gateway runs on your own server. Even if something happened to Aventrix Technologies, your installation continues running. The software keeps working. You own your data. The worst case is you don't receive new features or updates. Enterprise customers can arrange source code escrow for complete peace of mind.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BLOG PREVIEW -->
-<section class="blog-preview">
-  <div class="container">
-    <p class="section-eyebrow">AI Security Insights</p>
-    <h2 class="section-title">From Our Blog</h2>
-    <div class="blog-grid" id="blogGrid">
-      <div class="blog-card">
-        <div class="blog-tag">AI Security</div>
-        <h3>What is Shadow AI and Why Your Company Is at Risk Right Now</h3>
-        <p>83% of organizations have no AI governance controls. Here's what Shadow AI is, why it's dangerous, and what you can do about it today.</p>
-        <a href="blog.html" class="blog-read">Read Article →</a>
-      </div>
-      <div class="blog-card">
-        <div class="blog-tag">IT Management</div>
-        <h3>How to Use ChatGPT Safely in Your Company Without Risking Your Data</h3>
-        <p>A practical, step-by-step approach for IT admins — from writing an AI policy to implementing technical controls that actually work.</p>
-        <a href="blog.html" class="blog-read">Read Article →</a>
-      </div>
-      <div class="blog-card">
-        <div class="blog-tag">Case Studies</div>
-        <h3>5 Real AI Data Leaks That Cost Companies Millions</h3>
-        <p>From Samsung to healthcare breaches — real incidents showing exactly why AI governance matters. With prevention analysis for each.</p>
-        <a href="blog.html" class="blog-read">Read Article →</a>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:32px">
-      <a href="blog.html" class="btn-ghost">View All Articles →</a>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <div class="container">
-    <div class="cta-box">
+    <div class="cta-banner reveal">
       <div class="cta-glow"></div>
-      <h2>Ready to Secure Your Company's AI Usage?</h2>
-      <p>Join companies that protect their data while empowering employees with AI. Get started in 20 minutes. No credit card required.</p>
-      <div class="cta-buttons">
-        <a href="#contact" class="btn-primary btn-lg">Start Free 7-Day Trial — No Credit Card</a>
-        <a href="#contact" class="btn-ghost btn-lg">Schedule a Demo</a>
+      <div class="eyebrow" style="justify-content:center;display:flex">Get Started Today</div>
+      <h2 class="h2" style="margin-bottom:16px">Ready to Secure Your Company's AI Usage?</h2>
+      <p class="lead" style="margin:0 auto 36px;text-align:center">7-day free trial. No credit card required. Live in 20 minutes.</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn btn-p btn-lg">Start Free Trial — No Credit Card</a>
+        <a href="contact.html" class="btn btn-g btn-lg">Schedule a Demo</a>
       </div>
       <div class="cta-trust">
         <span>🔒 On-premise deployment</span>
@@ -762,155 +298,30 @@
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="contact-info">
-        <p class="section-eyebrow">Get In Touch</p>
-        <h2>Let's Talk About Securing Your Company's AI Usage.</h2>
-        <p>Talk to our team about a free trial, product demo, or pricing quote. We respond within 24 business hours.</p>
-        <div class="contact-items">
-          <div class="contact-item">
-            <span>📧</span>
-            <a href="mailto:sales@aventrixtechnologies.com">sales@aventrixtechnologies.com</a>
-          </div>
-          <div class="contact-item">
-            <span>💬</span>
-            <a href="https://wa.me/919104277272">WhatsApp: +91 9104277272</a>
-          </div>
-          <div class="contact-item">
-            <span>📍</span>
-            <span>Ahmedabad, Gujarat, India</span>
-          </div>
-          <div class="contact-item">
-            <span>🕐</span>
-            <span>Mon–Sat, 9:00 AM – 7:00 PM IST</span>
-          </div>
-        </div>
-      </div>
-      <div class="contact-form-wrap">
-        <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" onsubmit="submitForm(event)">
-          <input type="hidden" name="form-name" value="contact">
-          <div class="form-row">
-            <div class="form-group">
-              <label>Full Name *</label>
-              <input type="text" name="full_name" placeholder="Rajesh Sharma" required>
-            </div>
-            <div class="form-group">
-              <label>Company Name *</label>
-              <input type="text" placeholder="Sharma & Associates" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Business Email *</label>
-              <input type="email" name="email" placeholder="rajesh@company.com" required>
-            </div>
-            <div class="form-group">
-              <label>Phone Number</label>
-              <input type="tel" name="phone" placeholder="+91 98765 43210">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Company Size</label>
-              <select name="company_size">
-                <option>Select size</option>
-                <option>1–10 employees</option>
-                <option>11–50 employees</option>
-                <option>51–200 employees</option>
-                <option>201–500 employees</option>
-                <option>500+ employees</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Industry</label>
-              <select name="industry">
-                <option>Select industry</option>
-                <option>Legal</option>
-                <option>Healthcare</option>
-                <option>Finance / Banking</option>
-                <option>IT / MSP</option>
-                <option>Consulting</option>
-                <option>Manufacturing</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>I'm interested in</label>
-            <div class="checkbox-group">
-              <label class="checkbox-label"><input type="checkbox"> Free Trial</label>
-              <label class="checkbox-label"><input type="checkbox" checked> Product Demo</label>
-              <label class="checkbox-label"><input type="checkbox"> Pricing Quote</label>
-              <label class="checkbox-label"><input type="checkbox"> Partnership</label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea name="message" placeholder="Tell us about your company's AI usage situation and what you're looking to solve..." rows="3"></textarea>
-          </div>
-          <button type="submit" class="btn-primary" style="width:100%">Send Message →</button>
-          <p class="form-note">We'll respond within 24 business hours. No spam, ever.</p>
-        </form>
-        <div class="form-success" id="formSuccess" style="display:none">
-          <div class="success-icon">✅</div>
-          <h3>Message Sent!</h3>
-          <p>Thank you for reaching out. A member of our team will contact you within 24 business hours.</p>
-          <p>Need immediate help? <a href="https://wa.me/919104277272">WhatsApp us →</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
-<footer class="footer">
+<footer>
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-logo">🛡️ SecureAI Gateway</div>
-        <p>Enterprise AI governance platform for companies that can't afford to compromise on data security.</p>
-        <div class="footer-tagline">AI. Secured. Governed.</div>
-        <p class="footer-company">By <a href="https://aventrixtechnologies.com">Aventrix Technologies</a> · Ahmedabad, India</p>
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo">🛡️ SecureAI Gateway</div>
+        <p class="ft-desc">Enterprise AI governance platform for companies that can't afford to compromise on data security.</p>
+        <div class="ft-tagline">AI. Secured. Governed.</div>
+        <p style="font-size:12px;color:var(--dim)">By Aventrix Technologies · Ahmedabad, India</p>
       </div>
-      <div class="footer-col">
-        <h4>Product</h4>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="#contact">About Us</a>
-        <a href="blog.html">Blog</a>
-        <a href="#contact">Contact</a>
-        <a href="#contact">Request Demo</a>
-      </div>
-      <div class="footer-col">
-        <h4>Security</h4>
-        <a href="#features">DLP Engine</a>
-        <a href="#features">Compliance</a>
-        <a href="#features">Data Privacy</a>
-        <a href="#features">Audit Logs</a>
-      </div>
+      <div class="ft-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="blog.html">Blog</a></div>
+      <div class="ft-col"><h4>Company</h4><a href="contact.html">About</a><a href="contact.html">Contact</a><a href="contact.html">Free Trial</a><a href="contact.html">Demo</a></div>
+      <div class="ft-col"><h4>Contact</h4><a href="mailto:sales@aventrixtechnologies.com">sales@aventrixtechnologies.com</a><a href="https://wa.me/919104277272">WhatsApp</a><a href="#">Privacy Policy</a></div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Aventrix Technologies. All rights reserved.</span>
-      <span>GST: XXXXXXXXXXXX</span>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
+    <div class="ft-bottom">
+      <span>© 2026 Aventrix Technologies</span>
+      <a href="#">Privacy Policy</a><a href="#">Terms</a>
     </div>
   </div>
 </footer>
 
-<!-- WhatsApp Float -->
-<a href="https://wa.me/919104277272?text=Hi! I'd like to know more about SecureAI Gateway." class="whatsapp-float" target="_blank">
+<a href="https://wa.me/919104277272?text=Hi! I'd like to know more about SecureAI Gateway." class="wa" target="_blank">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
-
-<script src="script.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
