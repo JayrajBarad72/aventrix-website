@@ -1,5 +1,10 @@
 const API = 'https://avebackend.onrender.com/api';
 
+// Warm up backend on contact page load so form submits fast
+if (location.pathname.includes('contact')) {
+  fetch(`${API}/ping`).catch(() => {});
+}
+
 // Nav scroll
 window.addEventListener('scroll', () => {
   document.querySelector('.nav')?.classList.toggle('scrolled', scrollY > 10);
