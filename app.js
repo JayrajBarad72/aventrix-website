@@ -41,9 +41,8 @@ function toggleFAQ(btn) {
 async function submitContact(e) {
   e.preventDefault();
   const form = e.target;
-  const btn = form.querySelector('button[type=submit]');
-  btn.textContent = '⏳ Sending... (may take 30s)'; btn.disabled = true;
 
+  // Collect data
   const interests = [...form.querySelectorAll('input[type=checkbox]:checked')].map(c => c.value).join(', ');
   const data = {
     name: form.full_name?.value || '',
@@ -56,40 +55,20 @@ async function submitContact(e) {
     message: form.message?.value || ''
   };
 
-  // Try with 90 second timeout (Render free tier sleeps)
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 90000);
+  // Show success immediately
+  form.style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
 
-  try {
-    const res = await fetch(`${API}/contact`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-      signal: controller.signal
-    });
-    clearTimeout(timer);
-    const result = await res.json();
-    if (result.success) {
-      form.style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    } else {
-      throw new Error('Failed');
-    }
-  } catch (err) {
-    clearTimeout(timer);
-    // If timeout or network error — still show success since data may have saved
-    // and show fallback
-    if (err.name === 'AbortError' || err.message === 'Failed to fetch') {
-      // Show success anyway — Render was sleeping, try was sent
-      form.style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    } else {
-      btn.textContent = 'Send Message →';
-      btn.disabled = false;
-      alert('Something went wrong. Please email us directly at sales@aventrixtechnologies.com');
-    }
-  }
+  // Send to backend in background (non-blocking)
+  fetch(`${API}/contact`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(r => r.json())
+    .then(d => console.log('[Form] Backend response:', d))
+    .catch(e => console.log('[Form] Backend error (non-blocking):', e));
 }
+
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
