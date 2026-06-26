@@ -1,61 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Blog — SecureAI Gateway</title>
+<meta name="description" content="Practical guides, real incident analysis, and best practices for IT teams managing AI usage and data security.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>.page-hero{padding:140px 0 80px;text-align:center}.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}.blog-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:28px;display:flex;flex-direction:column;gap:12px;transition:all .2s}.blog-card:hover{border-color:var(--border-h);transform:translateY(-2px)}.blog-date{font-size:12px;color:var(--dim)}.blog-card h3{font-size:16px;font-weight:600;color:#fff;line-height:1.4}.blog-card p{font-size:13px;color:var(--muted);line-height:1.6;flex:1}.blog-read{font-size:13px;color:var(--blue-l);font-weight:500;align-self:flex-start}.sec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.sec-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:22px}.sec-icon{font-size:26px;margin-bottom:10px}.sec-card h4{font-size:15px;font-weight:600;color:#fff;margin-bottom:6px}.sec-card p{font-size:13px;color:var(--muted);line-height:1.6}.promise-box{background:rgba(56,161,105,.08);border:1px solid rgba(56,161,105,.2);border-radius:var(--r2);padding:32px;margin-top:48px}.promise-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text);margin-bottom:10px}@media(max-width:900px){.blog-grid,.sec-grid{grid-template-columns:1fr 1fr}}@media(max-width:550px){.blog-grid,.sec-grid{grid-template-columns:1fr}}</style>
+<style>
+.page-hero { padding: 80px 0 50px; text-align: center; }
+.page-hero h1 { margin: 22px auto 18px; max-width: 18ch; }
+.page-hero .lead { margin: 0 auto; }
+
+.posts { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.post {
+  background: linear-gradient(180deg,var(--panel),var(--bg-2));
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 28px; cursor: pointer; position: relative; overflow: hidden;
+  transition: transform .3s, border-color .3s, box-shadow .3s; display: flex; flex-direction: column;
+}
+.post:hover { transform: translateY(-6px); border-color: rgba(0,229,199,0.4); box-shadow: 0 18px 40px rgba(0,0,0,0.4), var(--glow-cyan); }
+.post .cat { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--cyan); margin-bottom: 10px; }
+.post .date { font-family: var(--font-mono); font-size: 11px; color: var(--muted-2); margin-bottom: 14px; }
+.post h3 { font-size: 1.15rem; line-height: 1.3; margin-bottom: 12px; }
+.post p { color: var(--muted); font-size: 14px; flex-grow: 1; }
+.post .read { margin-top: 16px; color: var(--cyan); font-size: 13px; font-weight: 600; font-family: var(--font-mono); }
+
+.loading { text-align: center; padding: 60px; color: var(--muted); font-family: var(--font-mono); font-size: 14px; }
+.soon { border: 1px dashed var(--line); display: grid; place-items: center; text-align: center; padding: 40px; color: var(--muted-2); }
+.soon .tag { font-family: var(--font-mono); font-size: 11px; color: var(--cyan); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+
+/* Article modal */
+.modal { position: fixed; inset: 0; z-index: 200; background: rgba(4,4,8,0.85); backdrop-filter: blur(8px); display: none; align-items: flex-start; justify-content: center; padding: 60px 20px; overflow-y: auto; }
+.modal.open { display: flex; }
+.article { max-width: 760px; width: 100%; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 44px; }
+.article .close { float: right; background: none; border: 1px solid var(--line); color: var(--muted); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; font-size: 18px; }
+.article .close:hover { border-color: var(--cyan); color: var(--cyan); }
+.article h2 { font-size: 1.8rem; margin: 8px 0 16px; }
+.article .meta { font-family: var(--font-mono); font-size: 12px; color: var(--cyan); margin-bottom: 24px; }
+.article .body { color: var(--muted); font-size: 15px; line-height: 1.8; white-space: pre-wrap; }
+.article .body h2, .article .body h3 { color: var(--text); margin: 24px 0 12px; }
+
+@media (max-width:880px){ .posts{ grid-template-columns:1fr; } }
+</style>
 </head>
 <body>
-<div class="grid-bg"></div>
-<nav class="nav">
-  <div class="nav-in">
-    <a href="index.html" class="logo">🛡️ SecureAI <span>Gateway</span></a>
-    <div class="nav-links">
-      <a href="features.html">Features</a><a href="pricing.html">Pricing</a>
-      <a href="security.html" >Security</a>
-      <a href="blog.html" class="active">Blog</a>
-      <a href="contact.html">Contact</a>
+<canvas id="particles"></canvas>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="brand"><span class="mark">🛡️</span> SecureAI <span class="by">Gateway</span></a>
+  <div class="nav-links">
+    <a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a>
+    <a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn btn-primary">Start Free Trial</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu">☰</button>
+</div></nav>
+
+<header class="page-hero wrap">
+  <span class="eyebrow reveal in">AI Security Insights</span>
+  <h1 class="reveal in">From the <span class="grad-text">SecureAI Gateway</span> blog</h1>
+  <p class="lead reveal in d1">Practical guides, real incident analysis, and best practices for IT teams managing AI.</p>
+</header>
+
+<section style="padding-top:20px;">
+  <div class="wrap">
+    <div class="posts" id="posts">
+      <div class="loading">Loading latest articles…</div>
     </div>
-    <div class="nav-cta"><a href="contact.html" class="btn btn-p">Start Free Trial</a></div>
-    <button class="burger" onclick="toggleMenu()">☰</button>
   </div>
-  <div class="mob-menu" id="mobMenu">
-    <a href="features.html">Features</a><a href="pricing.html">Pricing</a>
-    <a href="security.html">Security</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+</section>
+
+<div class="modal" id="modal">
+  <div class="article">
+    <button class="close" id="modalClose">✕</button>
+    <div class="meta" id="artMeta"></div>
+    <h2 id="artTitle"></h2>
+    <div class="body" id="artBody"></div>
   </div>
-</nav>
-<div class="page-hero"><div class="container">
-<div class="eyebrow reveal">AI Security Insights</div>
-<h1 class="h1 reveal" style="margin-bottom:16px">From the SecureAI Gateway Blog</h1>
-<p class="lead reveal" style="margin:0 auto">Practical guides, real incident analysis, and best practices for IT teams managing AI.</p>
-</div></div>
-<section class="alt" style="padding-top:0"><div class="container">
-<div class="blog-grid" id="blogGrid">
-<div class="blog-card reveal"><div class="blog-date">June 2026</div><div class="tag tag-blue" style="margin-bottom:6px">AI Security</div><h3>What is Shadow AI and Why Your Company Is at Risk Right Now</h3><p>83% of organizations have no AI governance controls. Here's what Shadow AI is, why it's dangerous, and what to do about it.</p><a href="article.html?id=shadow-ai" class="blog-read">Read Article →</a></div>
-<div class="blog-card reveal"><div class="blog-date">June 2026</div><div class="tag tag-blue" style="margin-bottom:6px">IT Management</div><h3>How to Use ChatGPT Safely in Your Company Without Risking Your Data</h3><p>A practical, step-by-step approach for IT admins — from writing an AI policy to implementing technical controls.</p><a href="article.html?id=chatgpt-safely" class="blog-read">Read Article →</a></div>
-<div class="blog-card reveal"><div class="blog-date">June 2026</div><div class="tag tag-red" style="margin-bottom:6px">Case Studies</div><h3>5 Real AI Data Leaks That Cost Companies Millions</h3><p>From Samsung to healthcare HIPAA violations — real incidents showing exactly why AI governance matters.</p><a href="article.html?id=data-leaks" class="blog-read">Read Article →</a></div>
-<div class="blog-card reveal"><div class="blog-date">June 2026</div><div class="tag tag-blue" style="margin-bottom:6px">Architecture</div><h3>On-Premise vs Cloud AI: What's Right for Your Business in 2026?</h3><p>The tradeoffs between on-premise and cloud AI — and why the hybrid approach gives you the best of both worlds.</p><a href="article.html?id=onprem-vs-cloud" class="blog-read">Read Article →</a></div>
-<div class="blog-card reveal"><div class="blog-date">June 2026</div><div class="tag tag-green" style="margin-bottom:6px">Compliance</div><h3>AI Governance Checklist for IT Admins — 25 Things You Need</h3><p>A complete checklist covering policy, technical controls, compliance readiness, employee training, and monitoring.</p><a href="article.html?id=governance-checklist" class="blog-read">Read Article →</a></div>
-<div class="blog-card reveal" style="background:rgba(55,138,221,.05);border-style:dashed"><div class="blog-date">Updated weekly</div><div class="tag tag-blue" style="margin-bottom:6px">Coming Soon</div><h3>New articles published weekly on AI security and governance</h3><p>Subscribe to get fresh content on Shadow AI risks, compliance guides, and best practices.</p><a href="contact.html" class="btn btn-p" style="font-size:13px;padding:8px 16px;margin-top:4px">Get Notified →</a></div>
 </div>
-<div style="text-align:center;margin-top:60px" class="reveal">
-<h2 class="h2" style="margin-bottom:16px">Protect Your Company's AI Usage</h2>
-<p style="font-size:16px;color:var(--muted);margin-bottom:28px">Start a free 7-day trial. No credit card. Live in 20 minutes.</p>
-<a href="contact.html" class="btn btn-p btn-lg">Start Free Trial →</a>
-</div>
-</div></section>
-<footer><div class="container"><div class="ft-grid">
-<div><div class="ft-logo">🛡️ SecureAI Gateway</div><p class="ft-desc">Enterprise AI governance platform.</p><div class="ft-tagline">AI. Secured. Governed.</div></div>
-<div class="ft-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a></div>
-<div class="ft-col"><h4>Company</h4><a href="contact.html">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
-<div class="ft-col"><h4>Contact</h4><a href="mailto:sales@aventrixtechnologies.com">sales@aventrixtechnologies.com</a></div>
-</div><div class="ft-bottom"><span>© 2026 Aventrix Technologies</span></div></div></footer>
-<a href="https://wa.me/919104277272" class="wa" target="_blank"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a href="index.html" class="brand"><span class="mark">🛡️</span> SecureAI <span class="by">Gateway</span></a>
+      <p class="tagline">Enterprise AI governance platform.</p>
+      <p class="sig">AI. Secured. Governed.</p>
+    </div>
+    <div><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="blog.html">Blog</a></div>
+    <div><h4>Company</h4><a href="contact.html">Contact</a><a href="https://calendly.com/aventrixtechnologies-info">Book a Demo</a></div>
+    <div><h4>Contact</h4><a href="mailto:info@aventrixtechnologies.com">info@aventrixtechnologies.com</a><a href="https://wa.me/919104277272">WhatsApp</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Aventrix Technologies</span><span>Privacy · Terms</span></div>
+</footer>
+
+<a href="https://wa.me/919104277272?text=Hi!%20I'd%20like%20to%20know%20more%20about%20SecureAI%20Gateway." class="wa-float" aria-label="WhatsApp">💬</a>
 <script src="app.js"></script>
 <script>
-async function loadPosts(){try{const r=await fetch('https://avebackend.onrender.com/api/blog/posts?limit=6');if(!r.ok)return;const d=await r.json();if(!d.posts?.length)return;document.getElementById('blogGrid').innerHTML=d.posts.map(p=>`<div class="blog-card reveal"><div class="blog-date">${new Date(p.created_at).toLocaleDateString('en-IN',{month:'long',year:'numeric'})}</div><div class="tag tag-blue" style="margin-bottom:6px">AI Security</div><h3>${p.title}</h3><p>${p.content?.substring(0,150)}...</p><a href="blog.html" class="blog-read">Read Article →</a></div>`).join('');}catch(e){}}loadPosts();
+const API = "https://avebackend.onrender.com";
+const postsEl = document.getElementById('posts');
+
+// Fallback posts shown if backend has none yet / is cold-starting
+const fallback = [
+  { title: "What is Shadow AI and Why Your Company Is at Risk Right Now", keywords: "AI Security", content: "83% of organizations have no AI governance controls. Here's what Shadow AI is, why it's dangerous, and what to do about it.", created_at: "2026-06-01" },
+  { title: "How to Use ChatGPT Safely in Your Company Without Risking Your Data", keywords: "IT Management", content: "A practical, step-by-step approach for IT admins — from writing an AI policy to implementing technical controls.", created_at: "2026-06-01" },
+  { title: "5 Real AI Data Leaks That Cost Companies Millions", keywords: "Case Studies", content: "From Samsung to healthcare HIPAA violations — real incidents showing exactly why AI governance matters.", created_at: "2026-06-01" },
+];
+
+function fmtDate(s) {
+  try { return new Date(s).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }); }
+  catch { return s; }
+}
+function excerpt(txt) { return (txt || "").replace(/[#*`>]/g,'').slice(0, 140).trim() + "…"; }
+
+function render(posts) {
+  if (!posts.length) { postsEl.innerHTML = '<div class="loading">No articles yet — check back soon.</div>'; return; }
+  postsEl.innerHTML = '';
+  posts.forEach((p, i) => {
+    const el = document.createElement('div');
+    el.className = 'post reveal';
+    el.innerHTML = `
+      <div class="cat">${(p.keywords || 'Insights').split(',')[0]}</div>
+      <div class="date">${fmtDate(p.created_at)}</div>
+      <h3>${p.title}</h3>
+      <p>${excerpt(p.content)}</p>
+      <div class="read">Read Article →</div>`;
+    el.addEventListener('click', () => openArticle(p));
+    postsEl.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('in'));
+  });
+  const soon = document.createElement('div');
+  soon.className = 'post soon reveal in';
+  soon.innerHTML = '<div><div class="tag">Updated weekly</div><strong style="color:var(--text)">More articles coming soon</strong></div>';
+  postsEl.appendChild(soon);
+}
+
+function openArticle(p) {
+  document.getElementById('artMeta').textContent = `${(p.keywords||'Insights').split(',')[0]} · ${fmtDate(p.created_at)}`;
+  document.getElementById('artTitle').textContent = p.title;
+  document.getElementById('artBody').textContent = p.content || '';
+  document.getElementById('modal').classList.add('open');
+}
+document.getElementById('modalClose').addEventListener('click', () => document.getElementById('modal').classList.remove('open'));
+document.getElementById('modal').addEventListener('click', (e) => { if (e.target.id === 'modal') document.getElementById('modal').classList.remove('open'); });
+
+(async function load() {
+  try {
+    const r = await fetch(`${API}/api/blog/posts`);
+    const data = await r.json();
+    const published = Array.isArray(data) ? data.filter(p => p.status !== 'draft') : [];
+    render(published.length ? published : fallback);
+  } catch (e) {
+    render(fallback);
+  }
+})();
 </script>
-</body></html>
+</body>
+</html>

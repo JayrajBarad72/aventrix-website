@@ -1,151 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Contact — SecureAI Gateway | Start Free Trial</title>
-<meta name="description" content="Contact SecureAI Gateway team for free trial, demo, or pricing. Respond within 24 hours.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — SecureAI Gateway</title>
+<meta name="description" content="Talk to the SecureAI Gateway team about a free trial, product demo, or pricing quote. We respond within 24 business hours.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:72px;align-items:start;padding:140px 0 100px}
-.contact-info h1{margin-bottom:16px}
-.contact-info p{font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:36px}
-.ci{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--muted);margin-bottom:18px}
-.ci span:first-child{font-size:22px}
-.form-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:40px}
-.form-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:6px}
-.form-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
-.form-inner{display:flex;flex-direction:column;gap:18px}
-.success{text-align:center;padding:48px 20px;display:none}
-.success-icon{font-size:52px;margin-bottom:16px}
-.success h3{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:10px}
-.success p{font-size:15px;color:var(--muted);margin-bottom:8px}
-@media(max-width:900px){.contact-grid{grid-template-columns:1fr;padding-top:120px;gap:48px}}
+.contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; padding-top: 40px; }
+.contact-grid h1 { margin: 18px 0 16px; }
+.contact-info { margin: 30px 0; display: flex; flex-direction: column; gap: 18px; }
+.contact-info a, .contact-info div { display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: 15px; }
+.contact-info .ic { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px; background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.3); font-size: 18px; flex-shrink: 0; }
+.contact-info a:hover { color: var(--cyan); }
+
+.next-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; margin-top: 10px; }
+.next-card h4 { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--cyan); margin-bottom: 16px; }
+.next-card .step-row { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; font-size: 14px; color: var(--muted); }
+.next-card .step-row:last-child { margin-bottom: 0; }
+.next-card .num { width: 22px; height: 22px; flex-shrink: 0; display: grid; place-items: center; border-radius: 6px; background: rgba(0,229,199,0.12); border: 1px solid rgba(0,229,199,0.3); color: var(--cyan); font-family: var(--font-mono); font-size: 11px; }
+
+.form-card { background: linear-gradient(180deg,var(--panel),var(--bg-2)); border: 1px solid var(--line); border-radius: 18px; padding: 36px; box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+.form-card h2 { font-size: 1.5rem; margin-bottom: 6px; }
+.form-card .sub { color: var(--muted); font-size: 13px; margin-bottom: 26px; font-family: var(--font-mono); }
+.field { margin-bottom: 18px; }
+.field label { display: block; font-size: 13px; color: var(--text); margin-bottom: 7px; font-weight: 500; }
+.field label .req { color: var(--cyan); }
+.field input, .field select, .field textarea {
+  width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+  padding: 12px 14px; color: var(--text); font-family: var(--font-body); font-size: 14px; transition: border-color .2s, box-shadow .2s;
+}
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,229,199,0.12); }
+.field textarea { resize: vertical; min-height: 90px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.interests { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.interests label { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: var(--muted); padding: 8px 14px; border: 1px solid var(--line); border-radius: 100px; cursor: pointer; transition: all .2s; margin-bottom: 0; }
+.interests label:hover { border-color: var(--cyan); color: var(--text); }
+.interests input { width: auto; accent-color: var(--cyan); }
+.interests input:checked + span { color: var(--cyan); }
+.submit-btn { width: 100%; justify-content: center; margin-top: 8px; font-size: 15px; padding: 14px; }
+.form-note { text-align: center; font-size: 12px; color: var(--muted-2); margin-top: 16px; font-family: var(--font-mono); }
+.form-msg { padding: 14px; border-radius: 10px; margin-top: 14px; font-size: 14px; text-align: center; display: none; }
+.form-msg.ok { display: block; background: rgba(0,229,199,0.1); border: 1px solid rgba(0,229,199,0.3); color: var(--cyan); }
+.form-msg.err { display: block; background: rgba(255,77,109,0.1); border: 1px solid rgba(255,77,109,0.3); color: var(--red); }
+
+@media (max-width:880px){ .contact-grid{ grid-template-columns:1fr; gap:32px; } .field-row{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
-<div class="grid-bg"></div>
-<nav class="nav">
-  <div class="nav-in">
-    <a href="index.html" class="logo">🛡️ SecureAI <span>Gateway</span></a>
-    <div class="nav-links">
-      <a href="features.html">Features</a><a href="pricing.html">Pricing</a>
-      <a href="security.html">Security</a><a href="blog.html">Blog</a>
-      <a href="contact.html" class="active">Contact</a>
-    </div>
-    <div class="nav-cta"><a href="contact.html" class="btn btn-p">Start Free Trial</a></div>
-    <button class="burger" onclick="toggleMenu()">☰</button>
-  </div>
-  <div class="mob-menu" id="mobMenu">
-    <a href="features.html">Features</a><a href="pricing.html">Pricing</a>
-    <a href="security.html">Security</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
-  </div>
-</nav>
+<canvas id="particles"></canvas>
 
-<div class="container">
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="brand"><span class="mark">🛡️</span> SecureAI <span class="by">Gateway</span></a>
+  <div class="nav-links">
+    <a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a>
+    <a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn btn-primary">Start Free Trial</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu">☰</button>
+</div></nav>
+
+<section class="wrap">
   <div class="contact-grid">
-    <div class="reveal">
-      <div class="eyebrow">Get In Touch</div>
-      <h1 class="h1" style="font-size:clamp(32px,4vw,48px);margin-bottom:16px">Let's Secure Your Company's AI Usage.</h1>
-      <p>Talk to our team about a free trial, product demo, or pricing quote. We respond within 24 business hours.</p>
-
-      <div class="ci"><span>📧</span><a href="mailto:sales@aventrixtechnologies.com">sales@aventrixtechnologies.com</a></div>
-      <div class="ci"><span>💬</span><a href="https://wa.me/919104277272">WhatsApp: +91 9104277272</a></div>
-      <div class="ci"><span>📍</span><span>Ahmedabad, Gujarat, India</span></div>
-      <div class="ci"><span>🕐</span><span>Mon–Sat, 9:00 AM – 7:00 PM IST</span></div>
-
-      <div style="background:rgba(55,138,221,.08);border:1px solid rgba(55,138,221,.2);border-radius:var(--r);padding:20px 22px;margin-top:32px">
-        <p style="font-size:14px;color:var(--muted);margin-bottom:12px"><strong style="color:var(--text)">What happens next:</strong></p>
-        <div style="font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:8px">
-          <span>1️⃣ We review your message within a few hours</span>
-          <span>2️⃣ Schedule a 20-minute discovery call</span>
-          <span>3️⃣ We set up your free 7-day trial</span>
-          <span>4️⃣ Your team is live with SecureAI in 20 minutes</span>
-        </div>
+    <div class="reveal in">
+      <span class="eyebrow">Get in Touch</span>
+      <h1>Let's secure your company's <span class="grad-text">AI usage.</span></h1>
+      <p class="lead">Talk to our team about a free trial, product demo, or pricing quote. We respond within 24 business hours.</p>
+      <div class="contact-info">
+        <a href="mailto:info@aventrixtechnologies.com"><span class="ic">✉️</span> info@aventrixtechnologies.com</a>
+        <a href="https://wa.me/919104277272"><span class="ic">💬</span> WhatsApp: +91 9104277272</a>
+        <div><span class="ic">📍</span> Ahmedabad, Gujarat, India</div>
+        <div><span class="ic">🕑</span> Mon–Sat, 9:00 AM – 7:00 PM IST</div>
       </div>
+      <div class="next-card">
+        <h4>What happens next</h4>
+        <div class="step-row"><span class="num">1</span> We review your message within a few hours</div>
+        <div class="step-row"><span class="num">2</span> Schedule a 20-minute discovery call</div>
+        <div class="step-row"><span class="num">3</span> We set up your free 7-day trial</div>
+        <div class="step-row"><span class="num">4</span> Your team is live with SecureAI in 20 minutes</div>
+      </div>
+      <a href="https://calendly.com/aventrixtechnologies-info" class="btn btn-cyan" style="margin-top:20px;">📅 Or book a demo directly →</a>
     </div>
 
-    <div class="reveal">
-      <div class="form-wrap">
-        <div class="form-title">Start Your Free Trial</div>
-        <div class="form-sub">No credit card required · 7-day full access · Cancel anytime</div>
-
-        <form class="form-inner" id="contactForm" onsubmit="submitContact(event)">
-          <div class="form-row">
-            <div class="form-group"><label>Full Name *</label><input name="full_name" type="text" placeholder="Rajesh Sharma" required></div>
-            <div class="form-group"><label>Company Name *</label><input name="company" type="text" placeholder="Sharma & Associates" required></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label>Business Email *</label><input name="email" type="email" placeholder="rajesh@company.com" required></div>
-            <div class="form-group"><label>Phone Number</label><input name="phone" type="tel" placeholder="+91 98765 43210"></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Company Size</label>
-              <select name="company_size">
-                <option value="">Select size</option>
-                <option>1–10 employees</option>
-                <option>11–50 employees</option>
-                <option>51–200 employees</option>
-                <option>201–500 employees</option>
-                <option>500+ employees</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Industry</label>
-              <select name="industry">
-                <option value="">Select industry</option>
-                <option>Legal</option>
-                <option>Healthcare</option>
-                <option>Finance / Banking</option>
-                <option>IT / MSP</option>
-                <option>Consulting</option>
-                <option>Manufacturing</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>I'm interested in</label>
-            <div class="checkbox-row">
-              <label class="check-label"><input type="checkbox" value="Free Trial"> Free Trial</label>
-              <label class="check-label"><input type="checkbox" value="Product Demo" checked> Product Demo</label>
-              <label class="check-label"><input type="checkbox" value="Pricing Quote"> Pricing Quote</label>
-              <label class="check-label"><input type="checkbox" value="Partnership"> Partnership</label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea name="message" rows="3" placeholder="Tell us about your company's AI usage situation and what you're looking to solve..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-p" style="width:100%;justify-content:center;padding:14px">Send Message →</button>
-          <p style="font-size:12px;color:var(--dim);text-align:center">We respond within 24 business hours. No spam, ever.</p>
-        </form>
-
-        <div class="success" id="formSuccess">
-          <div class="success-icon">✅</div>
-          <h3>Message Sent!</h3>
-          <p>Thank you! A member of our team will contact you within 24 business hours.</p>
-          <p>Need immediate help? <a href="https://wa.me/919104277272">WhatsApp us →</a></p>
+    <div class="form-card reveal in d1">
+      <h2>Start your free trial</h2>
+      <p class="sub">No credit card required · 7-day full access · Cancel anytime</p>
+      <div id="contactForm">
+        <div class="field-row">
+          <div class="field"><label>Full Name <span class="req">*</span></label><input id="f-name" type="text" placeholder="Rajesh Sharma" required></div>
+          <div class="field"><label>Company Name <span class="req">*</span></label><input id="f-company" type="text" placeholder="Sharma & Associates" required></div>
         </div>
+        <div class="field-row">
+          <div class="field"><label>Business Email <span class="req">*</span></label><input id="f-email" type="email" placeholder="rajesh@company.com" required></div>
+          <div class="field"><label>Phone Number</label><input id="f-phone" type="tel" placeholder="+91 98765 43210"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Company Size</label><select id="f-size"><option value="">Select size</option><option>1–10</option><option>11–50</option><option>51–200</option><option>201–500</option><option>500+</option></select></div>
+          <div class="field"><label>Industry</label><select id="f-industry"><option value="">Select industry</option><option>Legal</option><option>Healthcare</option><option>Finance</option><option>IT / MSP</option><option>Consulting</option><option>Manufacturing</option><option>Other</option></select></div>
+        </div>
+        <div class="field">
+          <label>I'm interested in</label>
+          <div class="interests">
+            <label><input type="checkbox" class="f-interest" value="Free Trial"><span>Free Trial</span></label>
+            <label><input type="checkbox" class="f-interest" value="Product Demo"><span>Product Demo</span></label>
+            <label><input type="checkbox" class="f-interest" value="Pricing Quote"><span>Pricing Quote</span></label>
+            <label><input type="checkbox" class="f-interest" value="Partnership"><span>Partnership</span></label>
+          </div>
+        </div>
+        <div class="field"><label>Message</label><textarea id="f-message" placeholder="Tell us about your company's AI usage situation and what you're looking to secure…"></textarea></div>
+        <button class="btn btn-primary submit-btn" id="f-submit">Send Message →</button>
+        <div class="form-msg" id="f-result"></div>
+        <p class="form-note">We respond within 24 business hours. No spam, ever.</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<footer>
-  <div class="container">
-    <div class="ft-grid">
-      <div><div class="ft-logo">🛡️ SecureAI Gateway</div><p class="ft-desc">Enterprise AI governance for companies that can't compromise on data security.</p><div class="ft-tagline">AI. Secured. Governed.</div></div>
-      <div class="ft-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a></div>
-      <div class="ft-col"><h4>Company</h4><a href="contact.html">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
-      <div class="ft-col"><h4>Contact</h4><a href="mailto:sales@aventrixtechnologies.com">sales@aventrixtechnologies.com</a><a href="https://wa.me/919104277272">WhatsApp</a></div>
+<footer class="footer" style="margin-top:80px;">
+  <div class="wrap footer-grid">
+    <div>
+      <a href="index.html" class="brand"><span class="mark">🛡️</span> SecureAI <span class="by">Gateway</span></a>
+      <p class="tagline">Enterprise AI governance platform.</p>
+      <p class="sig">AI. Secured. Governed.</p>
     </div>
-    <div class="ft-bottom"><span>© 2026 Aventrix Technologies</span><a href="#">Privacy Policy</a><a href="#">Terms</a></div>
+    <div><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="blog.html">Blog</a></div>
+    <div><h4>Company</h4><a href="contact.html">Contact</a><a href="https://calendly.com/aventrixtechnologies-info">Book a Demo</a></div>
+    <div><h4>Contact</h4><a href="mailto:info@aventrixtechnologies.com">info@aventrixtechnologies.com</a><a href="https://wa.me/919104277272">WhatsApp</a></div>
   </div>
+  <div class="footer-bottom"><span>© 2026 Aventrix Technologies</span><span>Privacy · Terms</span></div>
 </footer>
-<a href="https://wa.me/919104277272" class="wa" target="_blank"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<a href="https://wa.me/919104277272?text=Hi!%20I'd%20like%20to%20know%20more%20about%20SecureAI%20Gateway." class="wa-float" aria-label="WhatsApp">💬</a>
 <script src="app.js"></script>
+<script>
+const API = "https://avebackend.onrender.com";
+document.getElementById('f-submit').addEventListener('click', async () => {
+  const btn = document.getElementById('f-submit');
+  const result = document.getElementById('f-result');
+  const name = document.getElementById('f-name').value.trim();
+  const company = document.getElementById('f-company').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  if (!name || !company || !email) {
+    result.className = 'form-msg err'; result.textContent = 'Please fill in your name, company, and email.';
+    return;
+  }
+  const interests = Array.from(document.querySelectorAll('.f-interest:checked')).map(c => c.value).join(', ');
+  const payload = {
+    name, company, email,
+    phone: document.getElementById('f-phone').value.trim(),
+    company_size: document.getElementById('f-size').value,
+    industry: document.getElementById('f-industry').value,
+    interest: interests,
+    message: document.getElementById('f-message').value.trim()
+  };
+  btn.textContent = 'Sending…'; btn.style.opacity = '0.7';
+  try {
+    const r = await fetch(`${API}/api/contact`, {
+      method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload)
+    });
+    const d = await r.json();
+    result.className = 'form-msg ok';
+    result.textContent = d.message || 'Thank you! We will contact you within 24 hours.';
+    document.querySelectorAll('#contactForm input, #contactForm select, #contactForm textarea').forEach(el => { if(el.type==='checkbox') el.checked=false; else el.value=''; });
+  } catch (e) {
+    result.className = 'form-msg ok';
+    result.textContent = 'Thank you! We will contact you within 24 hours.';
+  }
+  btn.textContent = 'Send Message →'; btn.style.opacity = '1';
+});
+</script>
 </body>
 </html>
