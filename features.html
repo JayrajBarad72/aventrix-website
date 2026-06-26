@@ -1,190 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Features — SecureAI Gateway</title>
 <meta name="description" content="SecureAI Gateway features: DLP engine, multi-model AI, admin panel, audit logs, compliance. Built for enterprise security.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-.page-hero{padding:140px 0 80px;text-align:center}
-.feat-tag{display:inline-block;font-size:12px;font-weight:700;background:rgba(55,138,221,.15);color:var(--blue-l);padding:4px 14px;border-radius:20px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:16px}
-.feat-row h3{font-size:clamp(22px,3vw,30px)}
-.feat-row p{font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:24px}
-.dlp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
-.dlp-col-title{font-size:12px;font-weight:700;color:var(--blue-l);text-transform:uppercase;margin-bottom:8px}
-.dlp-item{font-size:13px;color:var(--muted);padding:3px 0}
-.mock-box{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:20px}
-.mock-hdr{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:14px}
-.mock-prompt{font-size:13px;line-height:1.6;padding:12px;background:var(--bg2);border-radius:8px;margin-bottom:8px}
-.flagged{background:rgba(229,62,62,.2);color:var(--red-l);padding:2px 4px;border-radius:4px;font-weight:600}
-.mock-res{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-radius:8px;font-size:12px;font-weight:600}
-.res-block{background:rgba(229,62,62,.1);color:var(--red-l);border:1px solid rgba(229,62,62,.2)}
-.res-ok{background:rgba(56,161,105,.1);color:var(--green-l);border:1px solid rgba(56,161,105,.2)}
-.model-tbl{border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.tbl-row{display:grid;grid-template-columns:1.2fr 2fr 1fr;padding:10px 14px;font-size:13px;border-bottom:1px solid var(--border)}
-.tbl-row:last-child{border-bottom:none}
-.tbl-hdr{background:var(--bg3);font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase}
-.audit-mock{border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.audit-hdr{padding:12px 16px;font-size:11px;font-weight:700;color:var(--muted);border-bottom:1px solid var(--border);text-transform:uppercase}
-.audit-row{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border);font-size:13px}
-.audit-row:last-child{border-bottom:none}
-.comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
-.comp-item{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:13px;font-weight:500}
-@media(max-width:600px){.dlp-grid{grid-template-columns:1fr}.comp-grid{grid-template-columns:1fr 1fr}}
+.page-hero { padding: 80px 0 40px; text-align: center; }
+.page-hero h1 { margin: 22px auto 18px; max-width: 14ch; }
+.page-hero .lead { margin: 0 auto; }
+
+.feature-block { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 28px; }
+.feature-block.flip .copy { order: 2; }
+.feature-block h2 { font-size: clamp(1.6rem,3vw,2.3rem); margin: 14px 0 14px; }
+.feature-block p.lead { margin-bottom: 24px; }
+.chip-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.chip-cols h4 { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--cyan); margin-bottom: 12px; }
+.chip-cols li { list-style: none; color: var(--muted); font-size: 14px; padding: 4px 0; }
+.chip-cols li::before { content: "✓ "; color: var(--cyan); }
+
+/* visual panels */
+.panel { background: linear-gradient(180deg,#0C0C16,#090910); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+.panel-bar { padding: 11px 16px; border-bottom: 1px solid var(--line); font-family: var(--font-mono); font-size: 12px; color: var(--muted); display:flex; align-items:center; gap:8px; }
+.panel-bar::before { content:""; width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:var(--glow-cyan); }
+.panel-body { padding: 16px; }
+.scan-line { border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-bottom:10px; font-size:13px; }
+.scan-line.bad { border-left:3px solid var(--red); background:rgba(255,77,109,0.05); }
+.scan-line.good { border-left:3px solid var(--cyan); background:rgba(0,229,199,0.04); }
+.scan-line .verdict { font-family:var(--font-mono); font-size:11px; margin-top:8px; }
+.scan-line.bad .verdict { color:var(--red); } .scan-line.good .verdict { color:var(--cyan); }
+
+.model-row { display:flex; justify-content:space-between; align-items:center; padding:13px 14px; border:1px solid var(--line); border-radius:10px; margin-bottom:9px; font-size:13.5px; }
+.model-row .badge { font-family:var(--font-mono); font-size:11px; padding:3px 9px; border-radius:6px; }
+.badge.free { background:rgba(0,229,199,0.12); color:var(--cyan); border:1px solid rgba(0,229,199,0.3); }
+.badge.paid { background:rgba(124,58,237,0.12); color:var(--violet-lt); border:1px solid rgba(124,58,237,0.3); }
+
+.comp-grid { display:flex; flex-wrap:wrap; gap:10px; }
+.comp-grid span { font-family:var(--font-mono); font-size:12px; padding:8px 14px; border:1px solid var(--line); border-radius:100px; color:var(--muted); background:rgba(255,255,255,0.02); }
+
+.audit-row { display:flex; justify-content:space-between; padding:11px 14px; border-bottom:1px solid var(--line); font-family:var(--font-mono); font-size:12px; }
+.audit-row .ok { color:var(--cyan); } .audit-row .no { color:var(--red); }
+
+@media (max-width: 880px){ .feature-block, .feature-block.flip .copy { grid-template-columns:1fr; order:0; } .chip-cols{ grid-template-columns:1fr 1fr; } }
 </style>
 </head>
 <body>
-<div class="grid-bg"></div>
-<nav class="nav">
-  <div class="nav-in">
-    <a href="index.html" class="logo">🛡️ SecureAI <span>Gateway</span></a>
-    <div class="nav-links">
-      <a href="features.html" class="active">Features</a><a href="pricing.html">Pricing</a>
-      <a href="security.html">Security</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
-    </div>
-    <div class="nav-cta"><a href="pricing.html" class="btn btn-g">View Plans</a><a href="contact.html" class="btn btn-p">Start Free Trial</a></div>
-    <button class="burger" onclick="toggleMenu()">☰</button>
-  </div>
-  <div class="mob-menu" id="mobMenu">
-    <a href="features.html">Features</a><a href="pricing.html">Pricing</a>
-    <a href="security.html">Security</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
-  </div>
-</nav>
+<canvas id="particles"></canvas>
 
-<div class="page-hero">
-  <div class="container">
-    <div class="eyebrow reveal">Core Features</div>
-    <h1 class="h1 reveal" style="margin-bottom:16px">Everything Your IT Team Needs<br>to Govern AI.</h1>
-    <p class="lead reveal" style="margin:0 auto">Built for companies that handle sensitive data and can't afford to compromise on security.</p>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="brand"><span class="mark">🛡️</span> SecureAI <span class="by">Gateway</span></a>
+  <div class="nav-links">
+    <a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a>
+    <a href="https://aventrixtechnologies.com/blog">Blog</a><a href="https://aventrixtechnologies.com/contact">Contact</a>
+    <a href="https://aventrixtechnologies.com/contact" class="btn btn-primary">Start Free Trial</a>
   </div>
-</div>
+  <button class="nav-toggle" aria-label="Menu">☰</button>
+</div></nav>
 
-<section class="alt" style="padding-top:0">
-  <div class="container">
-    <!-- DLP -->
-    <div class="feat-row reveal">
-      <div>
-        <div class="feat-tag">Data Loss Prevention</div>
-        <h3 class="h3">Stop Data Leaks Before They Happen — Automatically</h3>
-        <p>Powered by Microsoft Presidio — the same engine used by major enterprises. Scans every prompt in real-time before anything reaches any AI provider.</p>
-        <div class="dlp-grid">
-          <div><div class="dlp-col-title">Financial Data</div>
-            <div class="dlp-item">✓ Credit card numbers</div><div class="dlp-item">✓ Bank account numbers</div>
-            <div class="dlp-item">✓ UPI transaction IDs</div><div class="dlp-item">✓ PAN card numbers</div>
-            <div class="dlp-item">✓ Salary & payroll data</div>
-          </div>
-          <div><div class="dlp-col-title">Personal Data</div>
-            <div class="dlp-item">✓ Aadhaar card numbers</div><div class="dlp-item">✓ Passport numbers</div>
-            <div class="dlp-item">✓ Phone numbers</div><div class="dlp-item">✓ Email addresses</div>
-            <div class="dlp-item">✓ Custom keywords + regex</div>
+<header class="page-hero wrap">
+  <span class="eyebrow reveal in">Core Features</span>
+  <h1 class="reveal in">Everything your IT team needs to <span class="grad-text">govern AI.</span></h1>
+  <p class="lead reveal in d1">Built for companies that handle sensitive data and can't afford to compromise on security.</p>
+</header>
+
+<!-- DLP -->
+<section style="padding-top:40px;">
+  <div class="wrap">
+    <div class="feature-block">
+      <div class="copy reveal">
+        <span class="eyebrow">Data Loss Prevention</span>
+        <h2>Stop data leaks before they happen — automatically.</h2>
+        <p class="lead">Powered by Microsoft Presidio, the same engine used by major enterprises. Scans every prompt in real time before anything reaches an AI provider.</p>
+        <div class="chip-cols">
+          <div><h4>Financial Data</h4><ul><li>Credit card numbers</li><li>Bank account numbers</li><li>UPI transaction IDs</li><li>PAN card numbers</li><li>Salary & payroll data</li></ul></div>
+          <div><h4>Personal Data</h4><ul><li>Aadhaar card numbers</li><li>Passport numbers</li><li>Phone numbers</li><li>Email addresses</li><li>Custom keywords + regex</li></ul></div>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="panel">
+          <div class="panel-bar">DLP Engine — live scanning</div>
+          <div class="panel-body">
+            <div class="scan-line bad">Please analyze feedback. Customer Aadhaar: 4567 8901 2345 reported issues…<div class="verdict">⛔ BLOCKED — Aadhaar Number · logged · admin notified</div></div>
+            <div class="scan-line good">Summarize this quarterly report and highlight key growth metrics for Q3.<div class="verdict">✅ ALLOWED — no sensitive data · forwarded to Claude</div></div>
           </div>
         </div>
       </div>
-      <div>
-        <div class="mock-box">
-          <div class="mock-hdr">DLP Engine — Live Scanning</div>
-          <div class="mock-prompt">Please analyze feedback. Customer <span class="flagged">Aadhaar: 4567 8901 2345</span> reported issues with...</div>
-          <div class="mock-res res-block"><span>🚫 BLOCKED — Aadhaar Number</span><span style="font-size:11px;opacity:.8">Logged · Admin Notified</span></div>
-          <div class="mock-prompt" style="margin-top:12px">Summarize this quarterly report and highlight key growth metrics for Q3.</div>
-          <div class="mock-res res-ok"><span>✅ ALLOWED — No sensitive data</span><span style="font-size:11px;opacity:.8">Forwarded to Claude</span></div>
-        </div>
-      </div>
     </div>
+  </div>
+</section>
 
-    <!-- Multi-model -->
-    <div class="feat-row flip reveal">
-      <div>
-        <div class="feat-tag">Multi-Model AI</div>
-        <h3 class="h3">One Platform. Every AI Model.</h3>
-        <p>Stop paying for separate ChatGPT and Claude subscriptions. All models in one secure interface — with free local models that never touch the cloud.</p>
-        <div class="model-tbl" style="margin-top:20px">
-          <div class="tbl-row tbl-hdr"><span>Model</span><span>Best For</span><span>Cost</span></div>
-          <div class="tbl-row"><span><strong>Claude Sonnet 4.6</strong></span><span style="color:var(--muted)">Documents, analysis, reasoning</span><span style="color:var(--muted)">Paid API</span></div>
-          <div class="tbl-row"><span><strong>GPT-4o</strong></span><span style="color:var(--muted)">General tasks, creative work</span><span style="color:var(--muted)">Paid API</span></div>
-          <div class="tbl-row"><span><strong>Llama 3.2</strong></span><span style="color:var(--muted)">Sensitive queries, high volume</span><span style="color:var(--green-l)">FREE — Local</span></div>
-          <div class="tbl-row"><span><strong>Mistral</strong></span><span style="color:var(--muted)">Multilingual, alternative local</span><span style="color:var(--green-l)">FREE — Local</span></div>
-        </div>
+<!-- MULTI MODEL -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="feature-block flip">
+      <div class="copy reveal">
+        <span class="eyebrow">Multi-Model AI</span>
+        <h2>One platform. Every AI model.</h2>
+        <p class="lead">Stop paying for separate ChatGPT and Claude subscriptions. All models in one secure interface — with free local models that never touch the cloud.</p>
       </div>
-      <div>
-        <div class="mock-box">
-          <div class="mock-hdr">Employee Chat Interface</div>
-          <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
-            <div style="font-size:12px;padding:5px 12px;border-radius:16px;background:rgba(55,138,221,.15);color:var(--blue-l);border:1px solid rgba(55,138,221,.3)">🟣 Claude Sonnet 4.6</div>
-            <div style="font-size:12px;padding:5px 12px;border-radius:16px;color:var(--muted);border:1px solid var(--border)">🟢 GPT-4o</div>
-            <div style="font-size:12px;padding:5px 12px;border-radius:16px;color:var(--muted);border:1px solid var(--border)">🔵 Llama (Free)</div>
+      <div class="reveal d2">
+        <div class="panel">
+          <div class="panel-bar">model catalog</div>
+          <div class="panel-body">
+            <div class="model-row"><span>Claude Sonnet 4.6 · documents, analysis, reasoning</span><span class="badge paid">Paid API</span></div>
+            <div class="model-row"><span>GPT-4o · general tasks, creative work</span><span class="badge paid">Paid API</span></div>
+            <div class="model-row"><span>Llama 3.2 · sensitive queries, high volume</span><span class="badge free">FREE · Local</span></div>
+            <div class="model-row"><span>Mistral · multilingual, alternative local</span><span class="badge free">FREE · Local</span></div>
           </div>
-          <div style="background:rgba(55,138,221,.1);border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:8px;text-align:right">Summarize our Q3 financial report</div>
-          <div style="background:var(--bg2);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--muted)">Based on Q3 report, key highlights: revenue grew 23% YoY reaching ₹4.2Cr, EBITDA margins improved to 18%...</div>
-          <div style="font-size:11px;color:var(--dim);text-align:center;padding:10px 0 4px">🛡️ DLP Protected · All prompts scanned · Audit logged</div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Audit -->
-    <div class="feat-row reveal">
-      <div>
-        <div class="feat-tag">Compliance & Audit</div>
-        <h3 class="h3">Built for Compliance from Day One</h3>
-        <p>Every AI interaction logged automatically. CSV export for auditor review. Prove compliance with HIPAA, GDPR, DPDP Act, SOC 2 — out of the box.</p>
+<!-- COMPLIANCE -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="feature-block">
+      <div class="copy reveal">
+        <span class="eyebrow">Compliance & Audit</span>
+        <h2>Built for compliance from day one.</h2>
+        <p class="lead">Every AI interaction logged automatically. CSV export for auditor review. Prove compliance with HIPAA, GDPR, the DPDP Act, and SOC 2 — out of the box.</p>
         <div class="comp-grid">
-          <div class="comp-item">🏥 HIPAA Ready</div>
-          <div class="comp-item">🇪🇺 GDPR Compliant</div>
-          <div class="comp-item">🇮🇳 DPDP Act</div>
-          <div class="comp-item">🔐 SOC 2 Ready</div>
-          <div class="comp-item">💳 PCI-DSS</div>
-          <div class="comp-item">📋 ISO 27001</div>
+          <span>🏥 HIPAA Ready</span><span>🇪🇺 GDPR Compliant</span><span>🇮🇳 DPDP Act</span>
+          <span>🔐 SOC 2 Ready</span><span>💳 PCI-DSS</span><span>📋 ISO 27001</span>
         </div>
       </div>
-      <div>
-        <div class="audit-mock">
-          <div class="audit-hdr">Audit Log — Real Time</div>
-          <div class="audit-row">
-            <span style="flex:1;font-weight:500">sharma@co.com</span>
-            <span style="color:var(--muted);font-size:12px">Claude</span>
-            <span style="background:rgba(56,161,105,.15);color:var(--green-l);font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px">Allowed</span>
-            <span style="font-size:11px;color:var(--dim)">2m ago</span>
+      <div class="reveal d2">
+        <div class="panel">
+          <div class="panel-bar">audit log — real time</div>
+          <div class="panel-body">
+            <div class="audit-row"><span>priya.s · Claude</span><span class="ok">ALLOWED · 2m ago</span></div>
+            <div class="audit-row"><span>raj.m · GPT-4o</span><span class="no">BLOCKED · 5m ago</span></div>
+            <div class="audit-row"><span>dev.k · Llama</span><span class="ok">ALLOWED · 12m ago</span></div>
+            <div class="audit-row" style="border-bottom:0;"><span>hr.team · GPT-4o</span><span class="no">BLOCKED · 18m ago</span></div>
+            <div style="margin-top:14px;"><a href="https://aventrixtechnologies.com/contact" class="btn btn-ghost" style="width:100%;justify-content:center;">📥 Export to CSV for auditors →</a></div>
           </div>
-          <div class="audit-row">
-            <span style="flex:1;font-weight:500">priya@co.com</span>
-            <span style="color:var(--muted);font-size:12px">GPT-4o</span>
-            <span style="background:rgba(229,62,62,.15);color:var(--red-l);font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px">Blocked</span>
-            <span style="font-size:11px;color:var(--dim)">5m ago</span>
-          </div>
-          <div class="audit-row">
-            <span style="flex:1;font-weight:500">raj@co.com</span>
-            <span style="color:var(--muted);font-size:12px">Llama</span>
-            <span style="background:rgba(56,161,105,.15);color:var(--green-l);font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px">Allowed</span>
-            <span style="font-size:11px;color:var(--dim)">12m ago</span>
-          </div>
-          <div style="padding:10px 16px;font-size:12px;color:var(--blue-l);cursor:pointer">📥 Export to CSV for auditors →</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="dark" style="text-align:center">
-  <div class="container">
-    <h2 class="h2 reveal">Ready to see it in action?</h2>
-    <p class="lead reveal" style="margin:0 auto 32px">Start your free 7-day trial. No credit card. Live in 20 minutes.</p>
-    <a href="contact.html" class="btn btn-p btn-lg reveal">Start Free Trial →</a>
+<!-- CTA -->
+<section>
+  <div class="wrap">
+    <div class="cta-band reveal" style="text-align:center;background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(0,229,199,0.08));border:1px solid rgba(124,58,237,0.3);border-radius:24px;padding:64px 32px;">
+      <h2>Ready to see it in action?</h2>
+      <p class="lead" style="margin:14px auto 28px;">Start your free 7-day trial. No credit card. Live in 20 minutes.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://aventrixtechnologies.com/contact" class="btn btn-primary">Start Free Trial →</a>
+        <a href="https://calendly.com/aventrixtechnologies-info" class="btn btn-cyan">📅 Book a Demo</a>
+      </div>
+    </div>
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <div class="ft-grid">
-      <div><div class="ft-logo">🛡️ SecureAI Gateway</div><p class="ft-desc">Enterprise AI governance platform.</p><div class="ft-tagline">AI. Secured. Governed.</div></div>
-      <div class="ft-col"><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a></div>
-      <div class="ft-col"><h4>Company</h4><a href="contact.html">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
-      <div class="ft-col"><h4>Contact</h4><a href="mailto:sales@aventrixtechnologies.com">sales@aventrixtechnologies.com</a><a href="https://wa.me/919104277272">WhatsApp</a></div>
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a href="index.html" class="brand"><span class="mark">🛡️</span> SecureAI <span class="by">Gateway</span></a>
+      <p class="tagline">Enterprise AI governance platform.</p>
+      <p class="sig">AI. Secured. Governed.</p>
     </div>
-    <div class="ft-bottom"><span>© 2026 Aventrix Technologies</span><a href="#">Privacy Policy</a></div>
+    <div><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="security.html">Security</a><a href="https://aventrixtechnologies.com/blog">Blog</a></div>
+    <div><h4>Company</h4><a href="https://aventrixtechnologies.com/contact">About</a><a href="https://aventrixtechnologies.com/contact">Contact</a><a href="https://calendly.com/aventrixtechnologies-info">Book a Demo</a></div>
+    <div><h4>Contact</h4><a href="mailto:info@aventrixtechnologies.com">info@aventrixtechnologies.com</a><a href="https://wa.me/919104277272">WhatsApp</a></div>
   </div>
+  <div class="footer-bottom"><span>© 2026 Aventrix Technologies</span><span>Privacy · Terms</span></div>
 </footer>
-<a href="https://wa.me/919104277272" class="wa" target="_blank"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.75c-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<a href="https://wa.me/919104277272?text=Hi!%20I'd%20like%20to%20know%20more%20about%20SecureAI%20Gateway." class="wa-float" aria-label="WhatsApp">💬</a>
 <script src="app.js"></script>
 </body>
 </html>
