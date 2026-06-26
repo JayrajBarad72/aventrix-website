@@ -40,8 +40,14 @@
 .article .close:hover { border-color: var(--cyan); color: var(--cyan); }
 .article h2 { font-size: 1.8rem; margin: 8px 0 16px; }
 .article .meta { font-family: var(--font-mono); font-size: 12px; color: var(--cyan); margin-bottom: 24px; }
-.article .body { color: var(--muted); font-size: 15px; line-height: 1.8; white-space: pre-wrap; }
-.article .body h2, .article .body h3 { color: var(--text); margin: 24px 0 12px; }
+.article .body { color: var(--muted); font-size: 15px; line-height: 1.8; }
+.article .body p { margin-bottom: 16px; }
+.article .body h2, .article .body h3 { color: var(--text); font-family: var(--font-display); margin: 28px 0 12px; }
+.article .body h3 { font-size: 1.25rem; }
+.article .body ul { margin: 12px 0 16px 20px; }
+.article .body li { margin-bottom: 6px; }
+.article .body strong { color: var(--text); }
+.article .body a { color: var(--cyan); }
 
 @media (max-width:880px){ .posts{ grid-template-columns:1fr; } }
 </style>
@@ -137,10 +143,32 @@ function render(posts) {
   postsEl.appendChild(soon);
 }
 
+function mdToHtml(md) {
+  if (!md) return "";
+  // Escape HTML first
+  let h = md.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const lines = h.split('\n');
+  let out = [], inList = false;
+  for (let line of lines) {
+    let t = line.trim();
+    if (t.startsWith('## ')) { if(inList){out.push('</ul>');inList=false;} out.push('<h3>'+t.slice(3)+'</h3>'); }
+    else if (t.startsWith('# ')) { if(inList){out.push('</ul>');inList=false;} out.push('<h2>'+t.slice(2)+'</h2>'); }
+    else if (t.startsWith('- ')) { if(!inList){out.push('<ul>');inList=true;} out.push('<li>'+t.slice(2)+'</li>'); }
+    else if (t === '') { if(inList){out.push('</ul>');inList=false;} }
+    else { if(inList){out.push('</ul>');inList=false;} out.push('<p>'+t+'</p>'); }
+  }
+  if(inList) out.push('</ul>');
+  h = out.join('\n');
+  // bold **text** and links [text](url)
+  h = h.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  h = h.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer">$1</a>');
+  return h;
+}
+
 function openArticle(p) {
   document.getElementById('artMeta').textContent = `${(p.keywords||'Insights').split(',')[0]} · ${fmtDate(p.created_at)}`;
   document.getElementById('artTitle').textContent = p.title;
-  document.getElementById('artBody').textContent = p.content || '';
+  document.getElementById('artBody').innerHTML = mdToHtml(p.content || '');
   document.getElementById('modal').classList.add('open');
 }
 document.getElementById('modalClose').addEventListener('click', () => document.getElementById('modal').classList.remove('open'));
