@@ -141,7 +141,12 @@ function fmtDate(s) {
   try { return new Date(s).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }); }
   catch { return s; }
 }
-function excerpt(txt) { return (txt || "").replace(/[#*`>]/g,'').slice(0, 140).trim() + "…"; }
+function stripMeta(txt){ return (txt||"").replace(/<!--META:[^>]*-->/,'').trim(); }
+function excerpt(p) {
+  if (p.meta_description) return p.meta_description;
+  const c = stripMeta(p.content).replace(/[#*`>]/g,'');
+  return c.slice(0, 140).trim() + "…";
+}
 
 function render(posts) {
   if (!posts.length) { postsEl.innerHTML = '<div class="loading">No articles yet — check back soon.</div>'; return; }
@@ -153,7 +158,7 @@ function render(posts) {
       <div class="cat">${(p.keywords || 'Insights').split(',')[0]}</div>
       <div class="date">${fmtDate(p.created_at)}</div>
       <h3>${p.title}</h3>
-      <p>${excerpt(p.content)}</p>
+      <p>${excerpt(p)}</p>
       <div class="read">Read Article →</div>`;
     el.addEventListener('click', () => openArticle(p));
     postsEl.appendChild(el);
@@ -190,7 +195,7 @@ function mdToHtml(md) {
 function openArticle(p) {
   document.getElementById('artMeta').textContent = `${(p.keywords||'Insights').split(',')[0]} · ${fmtDate(p.created_at)}`;
   document.getElementById('artTitle').textContent = p.title;
-  document.getElementById('artBody').innerHTML = mdToHtml(p.content || '');
+  document.getElementById('artBody').innerHTML = mdToHtml(stripMeta(p.content) || '');
   document.getElementById('modal').classList.add('open');
 }
 document.getElementById('modalClose').addEventListener('click', () => document.getElementById('modal').classList.remove('open'));
